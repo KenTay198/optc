@@ -3497,6 +3497,16 @@ window.drops = {
             gamewith: null,
             'Defeat Level Rewards': [ 4341 ],
         },
+
+        {
+            name: 'Dr. Vegapunk - York',
+            dropID: 'pka24',
+            thumb: 4357,
+            global: true,
+            nakama: null,
+            gamewith: null,
+            'Defeat Level Rewards': [ 4357 ],
+        },
     ],
 
 

@@ -4176,6 +4176,10 @@ window.flags = {
     4349: { rr: 1, rro: 1, lrr: 1, kclrr: 1 },
     4350: { rr: 1, rro: 1 },
     4351: { shop: 1 },
+    4353: { rr: 1, rro: 1 },
+    4354: { rr: 1, rro: 1 },
+    4355: { rr: 1, rro: 1 },
+    4356: { rr: 1, rro: 1 },
     //break
     4986: { rr: 1, rro: 1, global: 1 },
     4987: { rr: 1, rro: 1, global: 1 },
