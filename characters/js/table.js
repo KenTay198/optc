@@ -934,7 +934,7 @@
 					"Cerebral",
 					"Powerhouse",
 				];
-				if (!Array.isArray(unit.class[0])) {
+				if (Object.prototype.toString.call(unit.class[0]) != "[object Array]") {
 					for (var i = 0; i < Kataclass.length; i++)
 						if (unit.class.indexOf(Kataclass[i]) != -1) Katacount++;
 				} else {
@@ -972,7 +972,7 @@
 					"Driven",
 					"Powerhouse",
 				];
-				if (!Array.isArray(unit.class[0])) {
+				if (Object.prototype.toString.call(unit.class[0]) != "[object Array]") {
 					for (var i = 0; i < Kataclass.length; i++)
 						if (unit.class.indexOf(Kataclass[i]) != -1) Katacount++;
 				} else {
@@ -1004,7 +1004,7 @@
 				var Katacount2 = 0;
 				var Katacount3 = 0;
 				var Kataclass = ["Fighter", "Slasher", "Cerebral", "Free Spirit"];
-				if (!Array.isArray(unit.class[0])) {
+				if (Object.prototype.toString.call(unit.class[0]) != "[object Array]") {
 					for (var i = 0; i < Kataclass.length; i++)
 						if (unit.class.indexOf(Kataclass[i]) != -1) Katacount++;
 				} else {
@@ -1042,7 +1042,7 @@
 					"Shooter",
 					"Cerebral",
 				];
-				if (!Array.isArray(unit.class[0])) {
+				if (Object.prototype.toString.call(unit.class[0]) != "[object Array]") {
 					for (var i = 0; i < Kataclass.length; i++)
 						if (unit.class.indexOf(Kataclass[i]) != -1) Katacount++;
 				} else {
@@ -1080,7 +1080,7 @@
 					"Cerebral",
 					"Powerhouse",
 				];
-				if (!Array.isArray(unit.class[0])) {
+				if (Object.prototype.toString.call(unit.class[0]) != "[object Array]") {
 					for (var i = 0; i < Kataclass.length; i++)
 						if (unit.class.indexOf(Kataclass[i]) != -1) Katacount++;
 				} else {
