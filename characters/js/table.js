@@ -896,7 +896,7 @@
 					"Cerebral",
 					"Powerhouse",
 				];
-				if (!Array.isArray(unit.class[0])) {
+				if (Object.prototype.toString.call(unit.class[0]) != "[object Array]") {
 					for (var i = 0; i < Kataclass.length; i++)
 						if (unit.class.indexOf(Kataclass[i]) != -1) Katacount++;
 				} else {
