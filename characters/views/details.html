@@ -93,6 +93,12 @@
                                     <td ng-if="!compare" colspan="{{::hybrid ? 2 : 1}}">{{::unit.maxEXP | number}}</td>
                                     <td ng-if="compare" colspan="{{::hybrid ? 2 : 1}}" comparison="negative">{{unit.maxEXP - compare.maxEXP | number}}</td>
                                 </tr>
+                                <tr>
+                                    <th>Tags</th>
+                                </tr>
+                                <tr>
+                                    <th>{{::unit.tags}}</th>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

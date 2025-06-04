@@ -70,6 +70,9 @@ app.controller('MainCtrl',function($scope, $rootScope, $state, $stateParams, $ti
 
 app.controller('SidebarCtrl',function($scope, $rootScope, $stateParams, $timeout) {
 
+    $scope.availableClasses = window.availableClasses;
+    $scope.availableTags = window.availableTags;
+
     $timeout(function() {
         $scope.$watch('filters',function(filters) {
             if (!$rootScope.filters || Object.keys($rootScope.filters).length === 0) return;
@@ -83,6 +86,7 @@ app.controller('SidebarCtrl',function($scope, $rootScope, $stateParams, $timeout
         $rootScope.filters = {
             custom: { },
             classes: [ ],
+            tags: [ ],
             types: [ ],
             stars: [ ],
             cost: [ 1, 99 ],
@@ -157,7 +161,6 @@ app.controller('SidebarCtrl',function($scope, $rootScope, $stateParams, $timeout
 
     $scope.onTypeClick = function(e, value) {
         if ($rootScope.filters.types.indexOf(value) == -1) {
-            //$rootScope.filters.classes = $rootScope.filters.classes.slice(0,1);
             $rootScope.filters.types.push(value);
         }
         else $rootScope.filters.types.splice($rootScope.filters.types.indexOf(value), 1);
@@ -165,10 +168,16 @@ app.controller('SidebarCtrl',function($scope, $rootScope, $stateParams, $timeout
 
     $scope.onClassClick = function(e, clazz) {
         if ($rootScope.filters.classes.indexOf(clazz) == -1) {
-            //$rootScope.filters.classes = $rootScope.filters.classes.slice(0,1);
             $rootScope.filters.classes.push(clazz);
         }
         else $rootScope.filters.classes.splice($rootScope.filters.classes.indexOf(clazz), 1);
+    };
+
+    $scope.onTagsClick = function(e, tags) {
+        if ($rootScope.filters.tags.indexOf(tags) == -1) {
+            $rootScope.filters.tags.push(tags);
+        }
+        else $rootScope.filters.tags.splice($rootScope.filters.tags.indexOf(tags), 1);
     };
 
     $scope.onStarsClick = function(e, stars) {

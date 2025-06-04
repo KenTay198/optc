@@ -221,6 +221,14 @@
 			if (filters.styleSPT && unit.pirateFest.class !== "SPT") return false;
 			if (filters.styleDBF && unit.pirateFest.class !== "DBF") return false;
 			if (filters.styleBAL && unit.pirateFest.class !== "BAL") return false;
+			//filter tags
+			if (filters.tags && filters.tags.length) {
+				if (unit.tags !== null) {
+					const common = filters.tags.filter(value => unit.tags.includes(value));
+					if (!common.length) return false;
+				}
+				if (unit.tags === null) return false;
+			}
 			// filter by stars
 			if (
 				filters.stars &&

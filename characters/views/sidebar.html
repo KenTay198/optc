@@ -54,7 +54,7 @@
         Class filters
         <i class="pull-right fa fa-{{filters.classEnabled ? 'chevron-up' : 'chevron-down'}}"></i>
     </span>
-    <span ng-repeat="(n,class) in [ 'Fighter', 'Shooter', 'Slasher', 'Striker', 'Free Spirit', 'Cerebral', 'Powerhouse', 'Driven', 'Evolver', 'Booster' ]"
+    <span ng-repeat="class in availableClasses"
         class="filter width-6 class" ng-click="onClassClick($event,class)"
         ng-class="{ active: filters.classes.indexOf(class) > -1 }">{{::class}}</span>
     <span class="filter width-12 exc"  ng-class="{ active: filters.classInclusive === true }"
@@ -82,6 +82,17 @@
         ng-click="filters.styleBAL = !filters.styleBAL">BAL</span>
 </div>
 
+<div class="filter-container expandable" id="tag-filter"
+     ng-class="{ expanded: !filters.tagEnabled }">
+    <span class="filter-header" ng-click="filters.tagEnabled = !filters.tagEnabled">
+        Tags filters
+        <i class="pull-right fa fa-{{filters.tagEnabled ? 'chevron-up' : 'chevron-down'}}"></i>
+    </span>
+    <span ng-repeat="tags in availableTags"
+        class="filter width-12 tags" ng-click="onTagsClick($event,tags)"
+        ng-class="{ active: filters.tags.indexOf(tags) > -1 }">{{::tags}}</span>
+</div>
+
 <div class="filter-container expandable" id="rarity-filter"
      ng-class="{ expanded: filters.rarityEnabled }">
     <span class="filter-header" ng-click="filters.rarityEnabled = !filters.rarityEnabled">
@@ -93,39 +104,6 @@
     <span ng-repeat="(n,stars) in [ 4, 5, 6 ]" class="filter stars width-4 stars-{{::stars}}+"
         ng-click="onStarsClick($event,stars + '+')" ng-class="{ active: filters.stars.indexOf(stars + '+') > -1 }"></span>
 </div>
-
-<!--div class="filter-container">
-    <span class="filter-header">Type filters</span>
-    <span ng-model="filters.type" ng-repeat="(n,type) in [ 'STR', 'QCK', 'DEX', 'PSY', 'INT' ]"
-        class="filter {{n < 3 ? 'width-4' : 'width-6'}} type {{type}}" ng-class="{ active: filters.types.indexOf(type) > -1 }"
-        ng-click="onTypeClick($event,type)">{{type}}</span>
-</div>
-
-<div class="filter-container">
-    <span class="filter-header">Character filters</span>
-    <span class="filter width-12 exc" ng-model="filters.dualUnits" ng-class="{ active: filters.dualUnits }"
-        ng-click="filters.dualUnits = !filters.dualUnits">Show Dual Character Units</span>
-</div>
-
-<div class="filter-container">
-    <span class="filter-header">Class filters</span>
-    <span ng-repeat="(n,class) in [ 'Fighter', 'Shooter', 'Slasher', 'Striker', 'Free Spirit', 'Cerebral', 'Powerhouse', 'Driven', 'Evolver', 'Booster' ]"
-        class="filter width-6 class" ng-click="onClassClick($event,class)"
-        ng-class="{ active: filters.classes.indexOf(class) > -1 }">{{class}}</span>
-    <span class="filter width-12 exc"  ng-class="{ active: filters.classInclusive === true }"
-        ng-model="filters.classInclusive" ng-click="filters.classInclusive = !filters.classInclusive">Exclude Characters with other Classes</span>
-    <span class="filter width-12 exc"  ng-class="{ active: filters.noSingleClass === true }"
-        ng-model="filters.noSingleClass" ng-click="filters.noSingleClass = !filters.noSingleClass">Exclude Single Class Characters</span>
-</div>
-
-
-<div class="filter-container">
-    <span class="filter-header">Rarity filters</span>
-    <span ng-repeat="(n,stars) in [ 1, 2, 3, 4, 5, 6 ]" class="filter stars width-4 stars-{{stars}}"
-        ng-click="onStarsClick($event,stars)" ng-class="{ active: filters.stars.indexOf(stars) > -1 }"></span>
-    <span ng-repeat="(n,stars) in [ 4, 5, 6 ]" class="filter stars width-4 stars-{{stars}}+"
-        ng-click="onStarsClick($event,stars + '+')" ng-class="{ active: filters.stars.indexOf(stars + '+') > -1 }"></span>
-</div-->
 
 <div class="filter-container expandable" id="cost-container"
         ng-class="{ expanded: filters.costEnabled }">
@@ -347,74 +325,6 @@
     <!--span class="filter width-12 exc" ng-model="filters.navyBlitz" ng-class="{ active: filters.navyBlitz }"
         ng-click="filters.navyBlitz = !filters.navyBlitz">Show VS Navy Blitz Battle Boosters</span-->
 </div>
-
-<!--div class="filter-container">
-    <span class="filter-header">Drop filters</span>
-    <span ng-repeat="type in [ 'Farmable', 'Non-farmable' ]" class="filter width-6 drop" ng-model="filters.drop"
-        ng-class="{ active: filters.drop == type }" ng-click="onFilterClick($event,type)">{{type}}</span>
-    <span ng-repeat="type in [ 'Global units', 'Japan exclusives' ]" class="filter width-6 drop" ng-model="filters.server"
-        ng-class="{ active: filters.server == type }" ng-click="onFilterClick($event,type)">{{type}}</span>
-    <span ng-repeat="type in [ 'In RR pool', 'Not in RR pool' ]" class="filter width-6 drop" ng-model="filters.rr"
-        ng-class="{ active: filters.rr == type }" ng-click="onFilterClick($event,type)">{{type}}</span>
-    <span ng-repeat="type in [ 'Farmable Sockets', 'No Farmable Sockets' ]" class="filter width-6 drop" ng-model="filters.socket"
-        ng-class="{ active: filters.socket == type }" ng-click="onFilterClick($event,type)">{{type}}</span>
-</div>
-
-<div class="filter-container">
-    <span class="filter-header">Exclusion filters</span>
-    <span class="filter width-6 exc" ng-model="filters.noBase" ng-class="{ active: filters.noBase }"
-        ng-click="filters.noBase = !filters.noBase">Hide base forms</span>
-    <span class="filter width-6 exc" ng-model="filters.noFodder" ng-class="{ active: filters.noFodder }"
-        ng-click="filters.noFodder = !filters.noFodder">Hide fodder</span>
-    <span class="filter width-12 exc" ng-model="filters.noEvos" ng-class="{ active: filters.noEvos }"
-        ng-click="filters.noEvos = !filters.noEvos">Hide Boosters and Evolvers</span>
-</div>
-
-<div class="filter-container">
-    <span class="filter-header">Treasure Map and Kizuna Clash<br>Boosters filters</span>
-    <span class="filter width-6 exc" ng-model="filters.globalTM" ng-class="{ active: filters.globalTM }"
-        ng-click="filters.globalTM = !filters.globalTM">Show Global TM Boosters [Akainu & Fujitora]</span>
-    <span class="filter width-6 exc" ng-model="filters.japanTM" ng-class="{ active: filters.japanTM }"
-        ng-click="filters.japanTM = !filters.japanTM">Show Japan TM Boosters [O-Robi]</span>
-    <span class="filter width-6 exc" ng-model="filters.globalKC" ng-class="{ active: filters.globalKC }"
-        ng-click="filters.globalKC = !filters.globalKC">Show Global KC Boosters [Zoro & Sanji Round 3></span>
-    <span class="filter width-6 exc" ng-model="filters.japanKC" ng-class="{ active: filters.japanKC }"
-        ng-click="filters.japanKC = !filters.japanKC">Show Japan KC Boosters [Kikunojo]<br></br></span>
-</div>
-
-<div class="filter-container">
-    <span class="filter-header">Specific Captain filters</span>
-    <span class="filter width-6 exc" ng-model="filters.katakuri" ng-class="{ active: filters.katakuri }"
-        ng-click="filters.katakuri = !filters.katakuri">Show Double Boosted Katakuri Units</span>
-    <span class="filter width-6 exc" ng-model="filters.katakuriplus" ng-class="{ active: filters.katakuriplus }"
-        ng-click="filters.katakuriplus = !filters.katakuriplus">Show Double Boosted Katakuri+ Units</span>
-    <span class="filter width-12 exc" ng-model="filters.katakuriv2" ng-class="{ active: filters.katakuriv2 }"
-        ng-click="filters.katakuriv2 = !filters.katakuriv2"><br>Show Double Boosted Katakuri V2 Units<br><br/></span>
-    <span class="filter width-6 exc" >Reserved for V2 Katakuri+ <br></span>
-    <span class="filter width-6 exc" ng-model="filters.TMlaw" ng-class="{ active: filters.TMlaw }"
-        ng-click="filters.TMlaw = !filters.TMlaw">Show Double Boosted TM Law Units</span>
-    <span class="filter width-6 exc" ng-model="filters.sulongCarrot" ng-class="{ active: filters.sulongCarrot }"
-        ng-click="filters.sulongCarrot = !filters.sulongCarrot">Show Double Boosted Sulong Carrot Units</span>
-
-</div>
-
-<div class="filter-container">
-    <span class="filter-header">Temporary Filters</span>
-    <span class="filter width-12 exc" ng-model="filters.summerGirlsBlitz" ng-class="{ active: filters.summerGirlsBlitz }"
-        ng-click="filters.summerGirlsBlitz = !filters.summerGirlsBlitz">Show Summer Girls Blitz Boosters</span>
-    <span class="filter width-12 exc" ng-model="filters.beastBlitz" ng-class="{ active: filters.beastBlitz }"
-        ng-click="filters.beastBlitz = !filters.beastBlitz">Show Beast Pirates Blitz</span>
-    <span class="filter width-12 exc" ng-model="filters.doffyBlitz" ng-class="{ active: filters.doffyBlitz }"
-        ng-click="filters.doffyBlitz = !filters.doffyBlitz">Show 3.375x Doflamingo Blitz Battle Boosters</span>
-    <span class="filter width-12 exc" ng-model="filters.worldClash" ng-class="{ active: filters.worldClash }"
-        ng-click="filters.worldClash = !filters.worldClash">Show World Clash Boosters</span>
-    <span class="filter width-12 exc" ng-model="filters.swordOrdeal" ng-class="{ active: filters.swordOrdeal }"
-        ng-click="filters.swordOrdeal = !filters.swordOrdeal">Show Ordeal of the Blade Boosters</span>
-    <span class="filter width-12 exc" ng-model="filters.luffyvkatakuri" ng-class="{ active: filters.luffyvkatakuri }"
-        ng-click="filters.luffyvkatakuri = !filters.luffyvkatakuri">Show Luffy v Katakuri Boosters</span>
-    <span class="filter width-12 exc" ng-model="filters.faceoffAA" ng-class="{ active: filters.faceoffAA }"
-        ng-click="filters.faceoffAA = !filters.faceoffAA">Show Akainu v Aokiji Boosters</span>
-</div-->
 
 <div class="filter-container" id="captain-container">
     <animate-collapse class="filter-header">Captain ability filters</animate-collapse>
