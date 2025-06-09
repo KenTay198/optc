@@ -901,6 +901,45 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr ng-if="rumble.gpability">
+                                    <td width="5%"><span ng-if="rumble2">Character 2 </span>GP Leader Skill</td>
+                                    <td th:style="${rumble2.llbgpability && unit.maxLevel == 99 ? 'width: 47.5%' : 'width: 95%'}">
+                                        <div>
+                                            <div ng-repeat="item in rumble2.gpability track by $index"><strong>Level {{::$index + 1}}:</strong> <span ng-bind-html="item.effects | abilityToString | decorate"></span></div>
+                                        </div>
+                                    </td>
+                                    <td style="width: 50%" ng-if="rumble2.llbgpability && unit.maxLevel == 99">
+                                        <div>
+                                            <div ng-repeat="item in rumble2.llbgpability track by $index"><strong>Level {{::$index + 1}}:</strong> <span ng-bind-html="item.effects | abilityToString | decorate"></span></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr ng-if="rumble.gpcondition">
+                                    <td width="5%"><span ng-if="rumble2">Character 2 </span>GP Burst Condition</td>
+                                    <td th:style="${rumble2.llbgpcondition && unit.maxLevel == 99 ? 'width: 47.5%' : 'width: 95%'}">
+                                        <div>
+                                            <div ng-repeat="item in rumble2.gpcondition track by $index"><span ng-bind-html="item | gpconditionToString | decorate"></span></div>
+                                        </div>
+                                    </td>
+                                    <td style="width: 50%" ng-if="rumble2.llbgpcondition && unit.maxLevel == 99">
+                                        <div>
+                                            <div ng-repeat="item in rumble2.llbgpcondition track by $index"><span ng-bind-html="item | gpconditionToString | decorate"></span></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr ng-if="rumble.gpspecial">
+                                    <td width="5%"><span ng-if="rumble2">Character 2 </span>GP Burst</td>
+                                    <td th:style="${rumble2.llbgpspecial && unit.maxLevel == 99 ? 'width: 47.5%' : 'width: 95%'}">
+                                        <div>
+                                            <div ng-repeat="item in rumble2.gpspecial track by $index"><strong>Level {{::$index + 1}}: [{{::item.uses}} use{{item.uses != 1 ? "s" : ""}}] </strong> <span ng-bind-html="item.effects | specialToString | decorate"></span></div>
+                                        </div>
+                                    </td>
+                                    <td style="width: 50%" ng-if="rumble2.llbgpspecial && unit.maxLevel == 99">
+                                        <div>
+                                            <div ng-repeat="item in rumble2.llbgpspecial track by $index"><strong>Level {{::$index + 1}}: [{{::item.uses}} use{{item.uses != 1 ? "s" : ""}}] </strong> <span ng-bind-html="item.effects | specialToString | decorate"></span></div>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

@@ -251,6 +251,12 @@ app.controller('DetailsCtrl',function($scope, $rootScope, $state, $stateParams, 
               }
               denormalizeEffects($scope.rumble2.ability);
               denormalizeEffects($scope.rumble2.special);
+                if ($scope.rumble2.llbability) denormalizeEffects($scope.rumble2.llbability);
+                if ($scope.rumble2.llbspecial) denormalizeEffects($scope.rumble2.llbspecial);
+                if ($scope.rumble2.gpspecial) denormalizeEffects($scope.rumble2.gpspecial);
+                if ($scope.rumble2.gpability) denormalizeEffects($scope.rumble2.gpability);
+                if ($scope.rumble2.llbgpspecial) denormalizeEffects($scope.rumble2.llbgpspecial);
+                if ($scope.rumble2.llbgpability) denormalizeEffects($scope.rumble2.llbgpability);
             }
         })
         .error(function (out) {
