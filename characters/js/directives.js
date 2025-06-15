@@ -955,6 +955,24 @@
 		};
 	};
 
+	filters.superspecialToString = function () {
+		return function (input) {
+			if (!input) return "N/A";
+			return filters.abilityToString()(input).slice(4)
+		};
+	};
+
+	filters.superspecialconditionToString = function () {
+		return function (input) {
+			switch (input.type) {
+				case "special":
+					return `After this character receives enemy's rumble special ${input.count} times`;
+				default:
+					return `UNKNOWN CONDITION ${JSON.stringify(input)}`;
+			}
+		};
+	};
+
 	filters.gpconditionToString = function () {
 		return function (input) {
 			switch (input.type) {
