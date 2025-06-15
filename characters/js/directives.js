@@ -1125,6 +1125,9 @@
 									effect.amount
 								}% HP after death`;
 								break;
+							case "On Death":
+								e += `On Death launches rumble special`;
+								break;
 							default:
 								e += `${"Reduce " + attrStr}`;
 								break;
