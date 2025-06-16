@@ -1,113 +1,446 @@
 window.availableTags = [
-  "Akazaya Nine",
-  "Alabasta",
-  "Alabasta Kingdom",
-  "Amazon Lily",
-  "Ancient Zoan-type",
-  "Animal Kingdom Pirates",
-  "Arlong Pirates",
-  "Bandits",
-  "Baratie",
-  "Baroque Works",
-  "Barto Club",
-  "Beautiful Pirates",
-  "Big Mom Pirates",
-  "Blackbeard Pirates",
-  "Bluejam Pirates",
-  "Bonney Pirates",
-  "Buggy Pirates",
-  "Buggy's Delivery",
-  "CP0",
-  "CP9",
-  "Celestial Dragon",
-  "Child",
-  "Cross Guild",
-  "Davy Back Fight",
-  "Donquixote Pirates",
-  "Dressrosa",
-  "Dressrosa Kingdom",
-  "Drum Kingdom",
-  "East Blue",
-  "Egghead",
-  "Enies Lobby",
-  "Evil Black Drum Kingdom",
-  "Fallen Monk Pirates",
-  "Firetank Pirates",
-  "Fish-Man",
-  "Fish-Man Island",
-  "Five Elders",
-  "Flying Pirates",
-  "Four Emperors",
-  "Foxy Pirates",
-  "Galley-La Company",
-  "Germa 66",
-  "Giant",
-  "Giant Pirate Crew",
-  "Golden Lion Pirates",
-  "Gran Tesoro",
-  "Great Prison Impel Down",
-  "Happosui Army",
-  "Hawkins Pirates",
-  "Heart Pirates",
-  "Homies",
-  "Impel Down",
-  "Jaya",
-  "Kamabakka Queendom",
-  "Kami's Army",
-  "Kid Pirates",
-  "Kozuki Clan",
-  "Krieg Pirates",
-  "Kuja Pirates",
-  "Kurozumi Clan",
-  "Land of Wano",
-  "Lead Performer",
-  "Logia-type",
-  "Marineford Paramount War",
-  "Merfolk",
-  "Mink",
-  "Mokomo Dukedom",
-  "Mythical Zoan-type",
-  "Navy",
-  "Navy Admiral",
-  "Navy Fleet Admiral",
-  "Navy Vice Admiral",
-  "Neo Marines",
-  "New Fish-Man Pirates",
-  "Ohara",
-  "On-Air Pirates",
-  "Paramythia-type",
-  "Punk Hazard",
-  "Red-Haired Pirates",
-  "Reverie",
-  "Revolutionary Army",
-  "Roger Pirates",
-  "Rolling Pirates",
-  "Royalty",
-  "Rumbar Pirates",
-  "Ryugu Kingdom",
-  "SWORD",
-  "Sabaody Archipelago",
-  "Scientist",
-  "Seraphim",
-  "Seven Warlords of the Sea",
-  "Skypiea",
-  "Spade Pirates",
-  "Straw Hat Pirates",
-  "Sun Pirates",
-  "Supernova",
-  "Sweet 3 General",
-  "Thriller Bark",
-  "Thriller Bark Pirates",
-  "Tobi Roppo",
-  "Tontatta",
-  "Tontatta Kingdom",
-  "Vegapunk",
-  "Water Seven",
-  "Whitebeard Pirates",
-  "Whole Cake Island",
-  "World Economic Journal",
-  "World Government",
-  "Worst Generation",
-  "Zoan-type",
-  "Zou"
+  {
+    "name": "Akazaya Nine",
+    "category": 1
+  },
+  {
+    "name": "Alabasta",
+    "category": 4
+  },
+  {
+    "name": "Alabasta Kingdom",
+    "category": 1
+  },
+  {
+    "name": "Amazon Lily",
+    "category": 4
+  },
+  {
+    "name": "Ancient Zoan-type",
+    "category": 3
+  },
+  {
+    "name": "Animal Kingdom Pirates",
+    "category": 1
+  },
+  {
+    "name": "Arlong Pirates",
+    "category": 1
+  },
+  {
+    "name": "Bandits",
+    "category": 1
+  },
+  {
+    "name": "Baratie",
+    "category": 1
+  },
+  {
+    "name": "Baroque Works",
+    "category": 1
+  },
+  {
+    "name": "Barto Club",
+    "category": 1
+  },
+  {
+    "name": "Beautiful Pirates",
+    "category": 1
+  },
+  {
+    "name": "Big Mom Pirates",
+    "category": 1
+  },
+  {
+    "name": "Blackbeard Pirates",
+    "category": 1
+  },
+  {
+    "name": "Bluejam Pirates",
+    "category": 1
+  },
+  {
+    "name": "Bonney Pirates",
+    "category": 1
+  },
+  {
+    "name": "Buggy Pirates",
+    "category": 1
+  },
+  {
+    "name": "Buggy's Delivery",
+    "category": 1
+  },
+  {
+    "name": "CP0",
+    "category": 1
+  },
+  {
+    "name": "CP9",
+    "category": 1
+  },
+  {
+    "name": "Celestial Dragon",
+    "category": 2
+  },
+  {
+    "name": "Child",
+    "category": 2
+  },
+  {
+    "name": "Cross Guild",
+    "category": 2
+  },
+  {
+    "name": "Davy Back Fight",
+    "category": 4
+  },
+  {
+    "name": "Donquixote Pirates",
+    "category": 1
+  },
+  {
+    "name": "Dressrosa",
+    "category": 4
+  },
+  {
+    "name": "Dressrosa Kingdom",
+    "category": 1
+  },
+  {
+    "name": "Drum Kingdom",
+    "category": 1
+  },
+  {
+    "name": "East Blue",
+    "category": 4
+  },
+  {
+    "name": "Egghead",
+    "category": 4
+  },
+  {
+    "name": "Enies Lobby",
+    "category": 4
+  },
+  {
+    "name": "Evil Black Drum Kingdom",
+    "category": 1
+  },
+  {
+    "name": "Fallen Monk Pirates",
+    "category": 1
+  },
+  {
+    "name": "Firetank Pirates",
+    "category": 1
+  },
+  {
+    "name": "Fish-Man",
+    "category": 2
+  },
+  {
+    "name": "Fish-Man Island",
+    "category": 4
+  },
+  {
+    "name": "Five Elders",
+    "category": 2
+  },
+  {
+    "name": "Flying Pirates",
+    "category": 1
+  },
+  {
+    "name": "Four Emperors",
+    "category": 2
+  },
+  {
+    "name": "Foxy Pirates",
+    "category": 1
+  },
+  {
+    "name": "Galley-La Company",
+    "category": 1
+  },
+  {
+    "name": "Germa 66",
+    "category": 1
+  },
+  {
+    "name": "Giant",
+    "category": 2
+  },
+  {
+    "name": "Giant Pirate Crew",
+    "category": 1
+  },
+  {
+    "name": "Golden Lion Pirates",
+    "category": 1
+  },
+  {
+    "name": "Gran Tesoro",
+    "category": 1
+  },
+  {
+    "name": "Great Prison Impel Down",
+    "category": 4
+  },
+  {
+    "name": "Happosui Army",
+    "category": 1
+  },
+  {
+    "name": "Hawkins Pirates",
+    "category": 1
+  },
+  {
+    "name": "Heart Pirates",
+    "category": 1
+  },
+  {
+    "name": "Homies",
+    "category": 2
+  },
+  {
+    "name": "Impel Down",
+    "category": 1
+  },
+  {
+    "name": "Jaya",
+    "category": 1
+  },
+  {
+    "name": "Kamabakka Queendom",
+    "category": 1
+  },
+  {
+    "name": "Kami's Army",
+    "category": 1
+  },
+  {
+    "name": "Kid Pirates",
+    "category": 1
+  },
+  {
+    "name": "Kozuki Clan",
+    "category": 1
+  },
+  {
+    "name": "Krieg Pirates",
+    "category": 1
+  },
+  {
+    "name": "Kuja Pirates",
+    "category": 1
+  },
+  {
+    "name": "Kurozumi Clan",
+    "category": 1
+  },
+  {
+    "name": "Land of Wano",
+    "category": 4
+  },
+  {
+    "name": "Lead Performer",
+    "category": 2
+  },
+  {
+    "name": "Logia-type",
+    "category": 3
+  },
+  {
+    "name": "Marineford Paramount War",
+    "category": 4
+  },
+  {
+    "name": "Merfolk",
+    "category": 2
+  },
+  {
+    "name": "Mink",
+    "category": 2
+  },
+  {
+    "name": "Mokomo Dukedom",
+    "category": 1
+  },
+  {
+    "name": "Mythical Zoan-type",
+    "category": 3
+  },
+  {
+    "name": "Navy",
+    "category": 1
+  },
+  {
+    "name": "Navy Admiral",
+    "category": 2
+  },
+  {
+    "name": "Navy Fleet Admiral",
+    "category": 2
+  },
+  {
+    "name": "Navy Vice Admiral",
+    "category": 2
+  },
+  {
+    "name": "Neo Marines",
+    "category": 1
+  },
+  {
+    "name": "New Fish-Man Pirates",
+    "category": 1
+  },
+  {
+    "name": "Ohara",
+    "category": 1
+  },
+  {
+    "name": "On-Air Pirates",
+    "category": 1
+  },
+  {
+    "name": "Paramythia-type",
+    "category": 3
+  },
+  {
+    "name": "Punk Hazard",
+    "category": 4
+  },
+  {
+    "name": "Red-Haired Pirates",
+    "category": 1
+  },
+  {
+    "name": "Reverie",
+    "category": 4
+  },
+  {
+    "name": "Revolutionary Army",
+    "category": 1
+  },
+  {
+    "name": "Roger Pirates",
+    "category": 1
+  },
+  {
+    "name": "Rolling Pirates",
+    "category": 1
+  },
+  {
+    "name": "Royalty",
+    "category": 2
+  },
+  {
+    "name": "Rumbar Pirates",
+    "category": 1
+  },
+  {
+    "name": "Ryugu Kingdom",
+    "category": 1
+  },
+  {
+    "name": "SWORD",
+    "category": 1
+  },
+  {
+    "name": "Sabaody Archipelago",
+    "category": 4
+  },
+  {
+    "name": "Scientist",
+    "category": 2
+  },
+  {
+    "name": "Seraphim",
+    "category": 2
+  },
+  {
+    "name": "Seven Warlords of the Sea",
+    "category": 2
+  },
+  {
+    "name": "Skypiea",
+    "category": 4
+  },
+  {
+    "name": "Spade Pirates",
+    "category": 1
+  },
+  {
+    "name": "Straw Hat Pirates",
+    "category": 1
+  },
+  {
+    "name": "Sun Pirates",
+    "category": 1
+  },
+  {
+    "name": "Supernova",
+    "category": 2
+  },
+  {
+    "name": "Sweet 3 General",
+    "category": 2
+  },
+  {
+    "name": "Thriller Bark",
+    "category": 4
+  },
+  {
+    "name": "Thriller Bark Pirates",
+    "category": 1
+  },
+  {
+    "name": "Tobi Roppo",
+    "category": 2
+  },
+  {
+    "name": "Tontatta",
+    "category": 2
+  },
+  {
+    "name": "Tontatta Kingdom",
+    "category": 1
+  },
+  {
+    "name": "Vegapunk",
+    "category": 2
+  },
+  {
+    "name": "Water Seven",
+    "category": 4
+  },
+  {
+    "name": "Whitebeard Pirates",
+    "category": 1
+  },
+  {
+    "name": "Whole Cake Island",
+    "category": 4
+  },
+  {
+    "name": "World Economic Journal",
+    "category": 1
+  },
+  {
+    "name": "World Government",
+    "category": 1
+  },
+  {
+    "name": "Worst Generation",
+    "category": 2
+  },
+  {
+    "name": "Zoan-type",
+    "category": 3
+  },
+  {
+    "name": "Zou",
+    "category": 4
+  }
 ];

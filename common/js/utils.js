@@ -315,7 +315,6 @@
 			maxHP: element[12],
 			maxATK: element[13],
 			maxRCV: element[14],
-			tags: element[16],
 			llbmaxHP: Math.max(element[12], Math.round(element[12] * 1.5)),
 			llbmaxATK: Math.max(element[13], Math.round(element[13] * 1.5)),
 			llbmaxRCV: Math.max(element[14], Math.round(element[14] * 1.5)),
