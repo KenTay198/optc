@@ -1302,7 +1302,7 @@
 				target.stat
 					? " with " +
 					  (target.percentage
-							? (target.priority == "exactly" ? target.priority + " " : "a ") +
+							? (target.priority == "above" || target.priority == "below" || target.priority == "exactly" ? target.priority + " " : "a ") +
 							  target.percentage +
 							  "%"
 							: "the " + target.priority) +
