@@ -14633,6 +14633,15 @@ window.captains = {
         atk: function(p) { return p.unit.type == "INT" ? 2.5 : 1; },
         hp: function(p) { return p.unit.type == "INT" ? 1.2 : 1; },
     },
+    4337 : {
+        hitAtk: function(p) {
+            if(!p.unit.class.has("Slasher") && !p.unit.class.has("Cerebral")) return 1;
+            console.log()
+            return p.modifiers.slice(0, p.chainPosition).some((t) => t !== "Perfect") ? 5.25 : 6;
+        },
+        hitModifiers: ["Perfect", "Perfect", "Perfect", "Perfect", "Perfect", "Perfect"],
+        hp: function(p) { return p.unit.class.has("Slasher") || p.unit.class.has("Cerebral") ? 1.5 : 1 }
+    }
 };
 
 var calcGhostStartIDCaptains = { "start": 5000 };
