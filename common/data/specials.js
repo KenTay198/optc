@@ -17973,6 +17973,21 @@ window.specials = {
             });
         },
     },
+    4337: {
+        atk: function(p) { return (p.unit.class.has("Cerebral") || p.unit.class.has("Slasher")) && p.cached.multiplier === 0 ? 3 : 1 },
+        type: "class",
+        tapTiming: function(p) { return (p.unit.class.has("Cerebral") || p.unit.class.has("Slasher")) && p.cached.multiplier === 1 ? { Good: 0.0, Great: 0.1, Perfect: 0.7 } : { Good: 0, Great: 0, Perfect: 0 }; },
+        onActivation: function(p) {
+            const levels = [0, 1];
+            const effects = ["ATK boost", "Tap Bonus"];
+            const n = (levels.indexOf(p.cached.multiplier) + 1) % levels.length;
+            p.cached.multiplier = levels[n];
+            p.scope.notify({
+                text : `Using the ${effects[n]}. To switch to the ${effects[(n + 1) % levels.length]}, disable and re-enable this special`,
+                name: (p.team[p.sourceSlot].unit.number+1).toString() + 'warning'
+            })
+        }
+    }
 };
 
 var calcGhostStartIDSpecials = { "start": 5000 };
