@@ -622,6 +622,9 @@ window.altspecials = {
         atkPlus: function(p) { return 0.25; },
         orbPlus: function(p) { return 0.25; },
     },
+    4337: {
+        affinity : function(p) { return p.unit.class.has("Cerebral") || p.unit.class.has("Slasher") ? 1.5 : 1 }
+    }
 };
 
 var calcGhostStartIDAltSpecials = { "start": 5000 };
