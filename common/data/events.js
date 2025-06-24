@@ -1649,6 +1649,20 @@ window.events = {
                 $scope.notify({ text: 'Disabling [RCV] orbs support.' });
         }
     },
+    4337: {
+        onInsertion: function($scope) {
+            if (++$scope.options.wanoOrbsEnabled == 1){}
+            if (++$scope.options.tndOrbsEnabled == 1){}
+            if (++$scope.options.meatOrbsEnabled == 1)
+                $scope.notify({ text: 'Enabling [RCV], [TND] and [WANO] orbs support.' });
+        },
+        onRemoval: function($scope) {
+            if (--$scope.options.wanoOrbsEnabled === 0){}
+            if (--$scope.options.tndOrbsEnabled === 0){}
+            if (--$scope.options.meatOrbsEnabled === 0)
+                $scope.notify({ text: 'Disabling [RCV], [TND] and [WANO] orbs support.' });
+        }
+    },
     5052: {
         onInsertion: function($scope) {
             if (++$scope.options.meatOrbsEnabled == 1)
