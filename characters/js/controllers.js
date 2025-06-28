@@ -234,17 +234,23 @@ app.controller('SidebarCtrl',function($scope, $rootScope, $stateParams, $timeout
                             throw "Import stopped"
                         }
 
+                        if(newData.some((e) => typeof e !== "number")) {
+                            alert("Invalid file provided during the character log import.")
+                            return;
+                        }
+
                         $storage.set('characterLog', newData);
-                        alert("Character Log imported. Please refresh the page.");
+                        alert("Character log imported. Please refresh the page.");
                         $scope.$apply();
                     } else {
-                        alert("Character Log file invalid");
+                        alert("Invalid file provided during the character log import.");
                     }
                 } catch (err) {
                     console.error("Error during character log import : " + err.message);
                 }
             };
             reader.readAsText(file);
+            input.value = "";
         };
 
         input.click();
