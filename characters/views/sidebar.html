@@ -513,7 +513,13 @@
         ng-click="filters.noLog = !filters.noLog">Hide units in Character Log</span>
     <span class="filter width-12 custom" ng-model="filters.noMissing" ng-class="{ active: filters.noMissing }"
         ng-click="filters.noMissing = !filters.noMissing">Hide units not in Character Log</span>
-    <span class="filter width-12 custom" ng-click="exportCharacterLog()">Export Character Log</span>
-    <span class="filter width-12 custom" ng-click="importCharacterLog()">Import Character Log</span>
+    <span class="filter width-12 exc" ng-click="exportCharacterLog()">
+        <i class="fa fa-file-export"></i>
+        Export Character Log
+    </span>
+    <span class="filter width-12 exc" ng-click="importCharacterLog()">
+        <i class="fa fa-file-import"></i>
+        Import Character Log
+    </span>
     <input type="file" id="importFileInput" style="display: none;" />
 </div>
