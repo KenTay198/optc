@@ -4998,5 +4998,4 @@ window.cooldowns = [
 	null,
 	null,
 	null,
-	null,
 ];
