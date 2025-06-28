@@ -68,7 +68,7 @@ app.controller('MainCtrl',function($scope, $rootScope, $state, $stateParams, $ti
 
 });
 
-app.controller('SidebarCtrl',function($scope, $rootScope, $stateParams, $timeout) {
+app.controller('SidebarCtrl',function($scope, $rootScope, $stateParams, $timeout, $storage) {
 
     $timeout(function() {
         $scope.$watch('filters',function(filters) {
@@ -181,6 +181,73 @@ app.controller('SidebarCtrl',function($scope, $rootScope, $stateParams, $timeout
         var type = tokens[0], key = tokens[1];
         if (!$rootScope.filters.hasOwnProperty(type)) $rootScope.filters[type] = { };
         $rootScope.filters[type][key] = ($rootScope.filters[type][key] == value ? null : value);
+    };
+
+    $scope.exportCharacterLog = function () {
+        const log = $storage.get("characterLog", []);
+            const confirm = window.confirm("Do you really want to export your characterLog?");
+            if (!confirm) return;
+
+            const base64 = btoa(JSON.stringify(log));
+
+            const blob = new Blob([base64], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "characterLog.txt";
+            a.click();
+
+            URL.revokeObjectURL(url);
+    }
+
+    $scope.importCharacterLog = function () {
+        const input = document.getElementById('importFileInput');
+
+        input.onchange = function (event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const base64 = e.target.result;
+                    const jsonStr = atob(base64);
+                    const parsedData = JSON.parse(jsonStr);
+
+                    if (Array.isArray(parsedData)) {
+                        const action = window.prompt(
+                        "How do you want to import you character log ?\n\n" +
+                        "Write:\n" +
+                        "  '1' to overwrite existing\n" +
+                        "  '2' to fuse with existing\n" +
+                        "  Any other key to cancel"
+                        );
+
+                        let newData = parsedData;
+
+                        if (action === "2") {
+                            const oldDatas = $storage.get("characterLog", []);
+                            newData = Array.from(new Set([...oldDatas, ...parsedData])).sort((a, b) => a - b);
+                        } else if (action === "1") {
+                        } else {
+                            throw "Import stopped"
+                        }
+
+                        $storage.set('characterLog', newData);
+                        alert("Character Log imported. Please refresh the page.");
+                        $scope.$apply();
+                    } else {
+                        alert("Character Log file invalid");
+                    }
+                } catch (err) {
+                    console.error("Error during character log import : " + err.message);
+                }
+            };
+            reader.readAsText(file);
+        };
+
+        input.click();
     };
 
     $scope.filterData = window.matchers;
