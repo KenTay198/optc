@@ -3517,6 +3517,16 @@ window.drops = {
             gamewith: null,
             'Defeat Level Rewards': [ 4384 ],
         },
+
+        {
+            name: 'Boa Hancock',
+            dropID: 'pka26',
+            thumb: 4398,
+            global: true,
+            nakama: null,
+            gamewith: null,
+            'Defeat Level Rewards': [ 4398 ],
+        },
     ],
 
 
@@ -8307,6 +8317,16 @@ window.drops = {
             nakama: null,
             gamewith: null,
             'Kizuna Exchange': [ "4294-skull", "4374-skull", "4378-skull" ]
+        },
+
+        {
+            name: 'Sabo & Koala',
+            dropID: 'kizuna69',
+            thumb: 4378,
+            global: true,
+            nakama: null,
+            gamewith: null,
+            'Kizuna Exchange': [ "4393-skull" ]
         },
 
     ],
