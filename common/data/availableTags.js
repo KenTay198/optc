@@ -324,6 +324,10 @@ window.availableTags = [
     "category": 1
   },
   {
+    "name": "Rocks Pirates",
+    "category": 1
+  },
+  {
     "name": "Roger Pirates",
     "category": 1
   },
@@ -422,6 +426,10 @@ window.availableTags = [
   {
     "name": "Whole Cake Island",
     "category": 4
+  },
+  {
+    "name": "Windmill Village",
+    "category": 1
   },
   {
     "name": "World Economic Journal",
