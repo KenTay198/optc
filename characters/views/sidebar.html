@@ -73,7 +73,7 @@
     </label>
 
     <div style="max-height: 350px; overflow-y: auto; padding-right: 5px;">
-        <span ng-repeat="tags in availableTags" class="filter width-12 tags" ng-click="onTagsClick($event,tags)"
+        <span ng-repeat="tags in availableTags" class="filter width-12 tags exc" ng-click="onTagsClick($event,tags)"
             ng-class="{ active: filters.tags.indexOf(tags) > -1 }">{{::tags.name}}</span>
     </div>
 </div>
