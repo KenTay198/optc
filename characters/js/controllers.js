@@ -135,6 +135,8 @@
           typeEnabled: false,
           characterEnabled: false,
           classEnabled: false,
+          tagEnabled: false,
+          rumbleStyleEnabled: false,
           dropEnabled: false,
           temporaryEnabled: false,
           specCaptEnabled: false,
@@ -184,11 +186,12 @@
       $scope.toggleFilters = function () {
         for (x in $rootScope.filters) {
           if (x.includes("Enabled")) {
-            // type, character, and class filters are expanded by default
+            // type, character, class, and tag filters are expanded by default
             if (
               x == "typeEnabled" ||
               x == "characterEnabled" ||
-              x == "classEnabled"
+              x == "classEnabled" || 
+              x == "tagEnabled"
             ) {
               $rootScope.filters[x] = !$rootScope.filters["toggle"];
             } else {
