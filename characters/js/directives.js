@@ -955,6 +955,24 @@
 		};
 	};
 
+	filters.superspecialToString = function () {
+		return function (input) {
+			if (!input) return "N/A";
+			return filters.abilityToString()(input).slice(4)
+		};
+	};
+
+	filters.superspecialconditionToString = function () {
+		return function (input) {
+			switch (input.type) {
+				case "special":
+					return `After this character receives enemy's rumble special ${input.count} times`;
+				default:
+					return `UNKNOWN CONDITION ${JSON.stringify(input)}`;
+			}
+		};
+	};
+
 	filters.gpconditionToString = function () {
 		return function (input) {
 			switch (input.type) {
@@ -1106,6 +1124,9 @@
 								e += `${effect.chance ? "r" : "R"}evive to ${
 									effect.amount
 								}% HP after death`;
+								break;
+							case "On Death":
+								e += `On Death launches rumble special`;
 								break;
 							default:
 								e += `${"Reduce " + attrStr}`;
@@ -1281,7 +1302,7 @@
 				target.stat
 					? " with " +
 					  (target.percentage
-							? (target.priority == "exactly" ? target.priority + " " : "a ") +
+							? (target.priority == "above" || target.priority == "below" || target.priority == "exactly" ? target.priority + " " : "a ") +
 							  target.percentage +
 							  "%"
 							: "the " + target.priority) +

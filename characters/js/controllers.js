@@ -362,19 +362,25 @@
           if ($scope.rumble.llbgpability)
             denormalizeEffects($scope.rumble.llbgpability);
 
-          // Check for VS unit
-          if ($scope.rumble.id != Math.floor($scope.rumble.id)) {
-            key = Math.floor(key);
-            $scope.rumble2 = jsonData.units.filter((unit) => {
-              return Math.floor(unit.id) == key;
-            })[1];
-            if ($scope.rumble2 === undefined) {
-              console.log("Couldn't find unit with id " + id);
-              return;
+            // Check for VS unit
+            if ( $scope.rumble.id != Math.floor($scope.rumble.id) ) {
+              key = Math.floor(key);
+              $scope.rumble2 = jsonData.units.filter(unit =>{
+                  return Math.floor(unit.id) == key;
+                })[1];
+              if ($scope.rumble2 === undefined ) {
+                console.log("Couldn't find unit with id " + id);
+                return;
+              }
+              denormalizeEffects($scope.rumble2.ability);
+              denormalizeEffects($scope.rumble2.special);
+                if ($scope.rumble2.llbability) denormalizeEffects($scope.rumble2.llbability);
+                if ($scope.rumble2.llbspecial) denormalizeEffects($scope.rumble2.llbspecial);
+                if ($scope.rumble2.gpspecial) denormalizeEffects($scope.rumble2.gpspecial);
+                if ($scope.rumble2.gpability) denormalizeEffects($scope.rumble2.gpability);
+                if ($scope.rumble2.llbgpspecial) denormalizeEffects($scope.rumble2.llbgpspecial);
+                if ($scope.rumble2.llbgpability) denormalizeEffects($scope.rumble2.llbgpability);
             }
-            denormalizeEffects($scope.rumble2.ability);
-            denormalizeEffects($scope.rumble2.special);
-          }
         })
         .error(function (out) {
           console.log("Failure in loading or parsing json" + out);

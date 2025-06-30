@@ -3517,6 +3517,16 @@ window.drops = {
             gamewith: null,
             'Defeat Level Rewards': [ 4384 ],
         },
+
+        {
+            name: 'Boa Hancock',
+            dropID: 'pka26',
+            thumb: 4398,
+            global: true,
+            nakama: null,
+            gamewith: null,
+            'Defeat Level Rewards': [ 4398 ],
+        },
     ],
 
 
@@ -7424,6 +7434,16 @@ window.drops = {
             'Calm Sea': [ "4358-skull" ],
         },
 
+        {
+            name: 'Sanji & Franky',
+            dropID: 'treasuremap93',
+            thumb: 4385,
+            global: true,
+            nakama: null,
+            gamewith: null,
+            'Calm Sea': [ "4385-skull" ],
+        },
+
     ],
 
     
@@ -8297,6 +8317,16 @@ window.drops = {
             nakama: null,
             gamewith: null,
             'Kizuna Exchange': [ "4294-skull", "4374-skull", "4378-skull" ]
+        },
+
+        {
+            name: 'Sabo & Koala',
+            dropID: 'kizuna69',
+            thumb: 4378,
+            global: true,
+            nakama: null,
+            gamewith: null,
+            'Kizuna Exchange': [ "4393-skull" ]
         },
 
     ],

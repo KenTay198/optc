@@ -974,667 +974,386 @@
                                                 <span ng-bind-html="stage.description[3] | decorate"></span><br>
                                                 <strong>Level {{::$index + 1}}:</strong>
                                                 <span ng-bind-html="stage.description[4] | decorate"></span><br-->
-                                    </div>
-                                </div>
-                                <div ng-if="isPotentialHybrid">
-                                    <span class="badge badge-japan">Japan</span>
-                                    <div ng-bind-html="details.potential.japan | decorate"></div>
-                                    <span class="badge badge-global">Global</span>
-                                    <div ng-bind-html="details.potential.global | decorate"></div>
-                                </div>
-                                <span class="notes" ng-if="details.potentialNotes"
-                                    ng-bind-html="details.potentialNotes | notes | decorate"></span>
-                            </td>
-                        </tr>
-                        <tr ng-if="details.lastTap">
-                            <td>Last Tap</td>
-                            <td>
-                                <strong>Condition:</strong> <span
-                                    ng-bind-html="details.lastTap.condition | decorate"></span>
-                                <div ng-repeat="item in details.lastTap.description track by $index"><strong>Level
-                                        {{::$index + 1}}:</strong>
-                                    <span ng-bind-html="item | decorate"></span><br>
-                                </div>
-                                <span class="notes" ng-if="details.lastTapNotes"
-                                    ng-bind-html="details.lastTapNotes | notes | decorate"></span>
-                            </td>
-                        </tr>
-                        <tr ng-if="details.superTandem">
-                            <td>Super Tandem</td>
-                            <td>
-                                <span ng-if="details.superTandem.condition"><strong>Condition:</strong> <span
-                                        ng-bind-html="details.superTandem.condition | decorate"></span></span>
-                                <div ng-repeat="item in details.superTandem.description track by $index"><strong>Level
-                                        {{::$index + 1}} (<span
-                                            ng-bind-html="details.superTandem.characterCondition[$index] | decorate"></span>):</strong>
-                                    <span ng-bind-html="item | decorate"></span><br>
-                                </div>
-                                <span class="notes" ng-if="details.superTandemNotes"
-                                    ng-bind-html="details.superTandemNotes | notes | decorate"></span>
-                                <add-super-tandem-query criteria="details.superTandem.characterCondition[4]"
-                                    excluded-families="families"></add-super-tandem-query>
-                            </td>
-                        </tr>
-                        <tr ng-if="details.superTandemBoost">
-                            <td>Super Tandem Boost</td>
-                            <td>
-                                <span ng-if="details.superTandemBoost.condition"><strong>Condition:</strong> <span
-                                        ng-bind-html="details.superTandemBoost.condition | decorate"></span></span>
-                                <div ng-repeat="item in details.superTandemBoost.description track by $index">
-                                    <strong>Level {{::$index + 1}} (<span
-                                            ng-bind-html="details.superTandemBoost.characterCondition[$index] | decorate"></span>):</strong>
-                                    <span ng-bind-html="item | decorate"></span><br>
-                                </div>
-                                <span class="notes" ng-if="details.superTandemBoostNotes"
-                                    ng-bind-html="details.superTandemBoostNotes | notes | decorate"></span>
-                                <add-super-tandem-query criteria="details.superTandemBoost.characterCondition[4]"
-                                    excluded-families="families"></add-super-tandem-query>
-                            </td>
-                        </tr>
-                        <tr ng-if="details.rush">
-                            <td>Rush</td>
-                            <td border-spacing="0px">
-                                <div ng-if="details.rush.condition"><strong>Condition:</strong>
-                                    <div ng-bind-html="details.rush.condition | decorate"></div>
-                                </div>
-                                <table class="table table-striped-column abilities rush">
-                                    <tbody>
-                                        <tr ng-repeat-start="item in details.rush.description track by $index">
-                                            <th colspan="2"><strong>Level {{::$index + 1}} (<span
-                                                        ng-bind-html="details.rush.characterCondition[$index] | decorate"></span>)</strong>
-                                            </th>
-                                        </tr>
-                                        <tr ng-repeat-end>
-                                            <td width="50%">
-                                                <!--strong>Level {{::$index + 1}} (<span ng-bind-html="details.rush.characterCondition[$index] | decorate"></span>):</strong-->
-                                                <div ng-bind-html="item | decorate"></div>
-                                            </td>
-                                            <td>
-                                                <div ng-bind-html="details.rush.stats[$index] | decorate"></div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <span class="notes" ng-if="details.rushNotes"
-                                    ng-bind-html="details.rushNotes | notes | decorate"></span>
-                                <add-super-tandem-query criteria="details.rush.characterCondition[4]"
-                                    excluded-families="families"></add-super-tandem-query>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="panel panel-default" ng-hide="hidden.abilities" ng-if="unit.maxLevel == 99">
-                <table class="table table-striped-column abilities">
-                    <tbody>
-                        <tr>
-                            <td width="10%">Level Limit Break</td>
-                            <td>
-                                <div ng-repeat="stage in details.lLimit track by $index" ng-if="details.lLimit">
-                                    <div><strong>Level {{::$index + 1}}:</strong> Increase Max Level to {{::[105, 110,
-                                        120, 130, 150][$index]}}</div>
-                                    <span ng-if="stage.captain.base" class="badge badge-base">Base Captain</span>
-                                    <div ng-if="stage.captain.base" ng-bind-html="stage.captain.base | decorate"></div>
-                                    <span ng-if="stage.captain.level1" class="badge badge-level1">LB Level 1
-                                        Captain</span>
-                                    <div ng-if="stage.captain.level1" ng-bind-html="stage.captain.level1 | decorate">
-                                    </div>
-                                    <span ng-if="stage.captain.level2" class="badge badge-level2">LB Level 2
-                                        Captain</span>
-                                    <div ng-if="stage.captain.level2" ng-bind-html="stage.captain.level2 | decorate">
-                                    </div>
-                                    <span ng-if="stage.captain.level6" class="badge badge-level6">LB Level 6
-                                        Captain</span>
-                                    <div ng-if="stage.captain.level6" ng-bind-html="stage.captain.level6 | decorate">
-                                    </div>
-                                    <span ng-if="stage.captain.character1" class="badge badge-character1">Character 1
-                                        Captain</span>
-                                    <div ng-if="stage.captain.character1"
-                                        ng-bind-html="stage.captain.character1 | decorate"></div>
-                                    <span ng-if="stage.captain.character2" class="badge badge-character2">Character 2
-                                        Captain</span>
-                                    <div ng-if="stage.captain.character2"
-                                        ng-bind-html="stage.captain.character2 | decorate"></div>
-                                    <span ng-if="stage.captain.combined" class="badge badge-combined">Dual Character
-                                        Captain</span>
-                                    <div ng-if="stage.captain.combined"
-                                        ng-bind-html="stage.captain.combined | decorate"></div>
-                                    <span ng-if="stage.sailor.base" class="badge badge-sbase">Base Sailor</span>
-                                    <div ng-if="stage.sailor.base" ng-bind-html="stage.sailor.base | decorate"></div>
-                                    <span ng-if="stage.sailor.base2" class="badge badge-sbase2">Base Sailor 2</span>
-                                    <div ng-if="stage.sailor.base2" ng-bind-html="stage.sailor.base2 | decorate"></div>
-                                    <span ng-if="stage.sailor.level1" class="badge badge-slevel1">LB Level 1
-                                        Sailor</span>
-                                    <div ng-if="stage.sailor.level1" ng-bind-html="stage.sailor.level1 | decorate">
-                                    </div>
-                                    <span ng-if="stage.sailor.level2" class="badge badge-slevel2">LB Level 2
-                                        Sailor</span>
-                                    <div ng-if="stage.sailor.level2" ng-bind-html="stage.sailor.level2 | decorate">
-                                    </div>
-                                    <span ng-if="stage.sailor.character1" class="badge badge-character1">Character 1
-                                        Sailor</span>
-                                    <div ng-if="stage.sailor.character1"
-                                        ng-bind-html="stage.sailor.character1 | decorate"></div>
-                                    <span ng-if="stage.sailor.character2" class="badge badge-character2">Character 2
-                                        Sailor</span>
-                                    <div ng-if="stage.sailor.character2"
-                                        ng-bind-html="stage.sailor.character2 | decorate"></div>
-                                    <span ng-if="stage.sailor.combined" class="badge badge-combined">Dual Character
-                                        Sailor</span>
-                                    <div ng-if="stage.sailor.combined" ng-bind-html="stage.sailor.combined | decorate">
-                                    </div>
-                                    <span ng-if="stage.special.base" class="badge badge-slevel1">Base Special</span>
-                                    <div ng-if="stage.special.base && !isLLBSpecialStaged[$index]"
-                                        ng-bind-html="stage.special.base | decorate"></div>
-                                    <span ng-if="stage.special.level1" class="badge badge-slevel1">Level 1
-                                        Special</span>
-                                    <div ng-if="stage.special.level1 && !isLLBSpecialStaged[$index]"
-                                        ng-bind-html="stage.special.level1 | decorate"></div>
-                                    <span ng-if="stage.special.level2" class="badge badge-slevel2">Level 2
-                                        Special</span>
-                                    <div ng-if="stage.special.level2 && !isLLBSpecialStaged[$index]"
-                                        ng-bind-html="stage.special.level2 | decorate"></div>
-                                    <span ng-if="stage.special.character1" class="badge badge-character1">Character 1
-                                        Special</span>
-                                    <div ng-if="stage.special.character1 && !isLLBSpecialStaged[$index]"
-                                        ng-bind-html="stage.special.character1 | decorate"></div>
-                                    <span ng-if="stage.special.character2" class="badge badge-character2">Character 2
-                                        Special</span>
-                                    <div ng-if="stage.special.character2 && !isLLBSpecialStaged[$index]"
-                                        ng-bind-html="stage.special.character2 | decorate"></div>
-                                    <span ng-if="stage.special.combined" class="badge badge-combined">Combined
-                                        Special</span>
-                                    <div ng-if="stage.special.combined && !isLLBSpecialStaged[$index]"
-                                        ng-bind-html="stage.special.combined | decorate"></div>
-                                    <span ng-if="stage.special && isLLBSpecialStaged[$index]"><br>
-                                        <div ng-repeat="stage1 in stage.special.base track by $index">
-                                            <strong>Stage {{::$index + 1}}</strong>
-                                            ({{::stage1.cooldown.length ? stage1.cooldown[0] :
-                                            stage1.cooldown}}{{::stage1.cooldown.length ? ' \u2192 ' +
-                                            stage1.cooldown[1] : ''}} turns) <span
-                                                ng-if="unit.limitCD != 0"><strong>➤</strong>
-                                                ({{::stage1.cooldown.length ? stage1.cooldown[0] - unit.limitCD :
-                                                stage1.cooldown}}{{::stage1.cooldown.length ? ' \u2192 ' +
-                                                (stage1.cooldown[1] - unit.limitCD) : ''}} turns)</span><span
-                                                ng-if="unit.limitexCD != 0 && unit.limitexCD != unit.limitCD"><strong>➤</strong>
-                                                ({{::stage1.cooldown.length ? stage1.cooldown[0] - unit.limitexCD :
-                                                stage1.cooldown}}{{::stage1.cooldown.length ? ' \u2192 ' +
-                                                (stage1.cooldown[1] - unit.limitexCD) : ''}} turns)</span>:
-                                            <span ng-bind-html="stage1.description | decorate"></span>
+                                            </div>
                                         </div>
-                                    </span>
-                                    <div ng-if="stage.rResilience" class="badge badge-slevel1">Rumble Resilience</div>
-                                    <br ng-if="stage.rResilience"><span ng-if="stage.rResilience"
-                                        ng-repeat="item in rumble.llbresilience track by $index"><span
-                                            ng-bind-html="item | resilienceToString | decorate"></span><br /></span>
-                                    <div ng-if="stage.rAbility" class="badge badge-slevel1">Rumble Ability</div>
-                                    <div ng-if="stage.rAbility"
-                                        ng-bind-html="rumble.llbability[rumble.llbability.length-1].effects | abilityToString | decorate">
-                                    </div>
-                                    <div ng-if="stage.rSpecial" class="badge badge-slevel1">Rumble Special</div>
-                                    <div ng-if="stage.rSpecial"
-                                        ng-bind-html="rumble.llbspecial[rumble.llbspecial.length-1].effects | abilityToString | decorate">
-                                    </div>
-                                    <div ng-if="stage.rSuperSpecial" class="badge badge-slevel1">Rumble Super Special
-                                    </div><br ng-if="stage.rSuperSpecial"><span ng-if="stage.rSuperSpecial"
-                                        ng-repeat="item in rumble.llbsuperspecial track by $index"><span
-                                            ng-bind-html="item | resilienceToString | decorate"></span><br /></span>
-                                    <div ng-if="stage.gpAbility" class="badge badge-slevel1">Grand Party Abilty</div>
-                                    <div ng-if="stage.gpAbility"
-                                        ng-bind-html="rumble.llbgpability[rumble.llbgpability.length-1].effects | abilityToString | decorate">
-                                    </div>
-                                    <div ng-if="stage.gpSpecial" class="badge badge-slevel1">Grand Party Special</div>
-                                    <div ng-if="stage.gpSpecial"
-                                        ng-bind-html="rumble.llbgpspecial[rumble.llbgpspecial.length-1].effects | abilityToString | decorate">
-                                    </div>
-                                    <br ng-if="$index != 4">
-                                </div>
-                                <div ng-repeat="x in [].constructor(5) track by $index" ng-if="!details.lLimit">
-                                    <strong>Level {{::$index + 1}}:</strong> Increase Max Level to {{::[105, 110, 120,
-                                    130, 150][$index]}}
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3 id="rumbleSection" class="page-header" ng-hide="hidden.abilities" ng-if="rumble.ability">Pirate Rumble
-            </h3>
-
-            <div class="panel panel-default" ng-hide="hidden.abilities" ng-if="rumble.ability">
-                <table class="table table-striped-column abilities">
-                    <tbody>
-                        <tr ng-if="rumble2">
-                            <th colspan="2">Character 1</th>
-                        </tr>
-                        <tr ng-if="rumble.pattern">
-                            <td width="5%"><span ng-if="rumble2">Character 1 </span>Attack Pattern</td>
-                            <td colspan="2">
-                                <span ng-repeat="item in rumble.pattern track by $index"><span
-                                        ng-bind-html="item | patternToString"></span>{{::$index != rumble.pattern.length
-                                    - 1 ? ' \u21e8 ' : ''}}</span>
-                            </td>
-                        </tr>
-                        <tr ng-if="rumble.target">
-                            <td width="5%"><span ng-if="rumble2">Character 1 </span>Attack Target</td>
-                            <td colspan="2">
-                                <span ng-bind-html="rumble.target | targetToString"></span>
-                            </td>
-                        </tr>
-                        <tr ng-if="rumble.llbability && unit.maxLevel == 99">
-                            <td width="5%"></td>
-                            <td style="width: 47.5%"><strong>Base</strong></td>
-                            <td style="width: 50%"><strong>Level Limit Break</strong></td>
-                        </tr>
-                        <tr ng-if="rumble.resilience">
-                            <td width="5%"><span ng-if="rumble2">Character 1 </span>Resistance</td>
-                            <td
-                                th:style="${rumble.llbresilience && unit.maxLevel == 99 ? 'width: 47.5%' : 'width: 95%'}">
-                                <span ng-repeat="item in rumble.resilience track by $index"><span
-                                        ng-bind-html="item | resilienceToString | decorate"></span><br /></span>
-                            </td>
-                            <td style="width: 50%" ng-if="rumble.llbresilience && unit.maxLevel == 99">
-                                <span ng-repeat="item in rumble.llbresilience track by $index"><span
-                                        ng-bind-html="item | resilienceToString | decorate"></span><br /></span>
-                            </td>
-                        </tr>
-                        <tr ng-if="rumble.ability">
-                            <td width="5%"><span ng-if="rumble2">Character 1 </span>Rumble Ability</td>
-                            <td th:style="${rumble.llbability && unit.maxLevel == 99 ? 'width: 47.5%' : 'width: 95%'}">
-                                <div>
-                                    <div ng-repeat="item in rumble.ability track by $index"><strong>Level {{::$index +
-                                            1}}:</strong> <span
-                                            ng-bind-html="item.effects | abilityToString | decorate"></span></div>
-                                </div>
-                            </td>
-                            <td style="width: 50%" ng-if="rumble.llbability && unit.maxLevel == 99">
-                                <div>
-                                    <div ng-repeat="item in rumble.llbability track by $index"><strong>Level {{::$index
-                                            + 1}}:</strong> <span
-                                            ng-bind-html="item.effects | abilityToString | decorate"></span></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr ng-if="rumble.special">
-                            <td width="5%"><span ng-if="rumble2">Character 1 </span>Rumble Special</td>
-                            <td th:style="${rumble.llbspecial && unit.maxLevel == 99 ? 'width: 47.5%' : 'width: 95%'}">
-                                <div>
-                                    <div ng-repeat="item in rumble.special track by $index"><strong>Level {{::$index +
-                                            1}}: [{{::item.cooldown}} second cooldown] </strong> <span
-                                            ng-bind-html="item.effects | specialToString | decorate"></span></div>
-                                </div>
-                            </td>
-                            <td style="width: 50%" ng-if="rumble.llbspecial && unit.maxLevel == 99">
-                                <div>
-                                    <div ng-repeat="item in rumble.llbspecial track by $index"><strong>Level {{::$index
-                                            + 1}}: [{{::item.cooldown}} second cooldown] </strong> <span
-                                            ng-bind-html="item.effects | specialToString | decorate"></span></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr ng-if="rumble.gpability">
-                            <td width="5%"><span ng-if="rumble2">Character 1 </span>GP Leader Skill</td>
-                            <td
-                                th:style="${rumble.llbgpability && unit.maxLevel == 99 ? 'width: 47.5%' : 'width: 95%'}">
-                                <div>
-                                    <div ng-repeat="item in rumble.gpability track by $index"><strong>Level {{::$index +
-                                            1}}:</strong> <span
-                                            ng-bind-html="item.effects | abilityToString | decorate"></span></div>
-                                </div>
-                            </td>
-                            <td style="width: 50%" ng-if="rumble.llbgpability && unit.maxLevel == 99">
-                                <div>
-                                    <div ng-repeat="item in rumble.llbgpability track by $index"><strong>Level
-                                            {{::$index + 1}}:</strong> <span
-                                            ng-bind-html="item.effects | abilityToString | decorate"></span></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr ng-if="rumble.gpcondition">
-                            <td width="5%"><span ng-if="rumble2">Character 1 </span>GP Burst Condition</td>
-                            <td
-                                th:style="${rumble.llbgpcondition && unit.maxLevel == 99 ? 'width: 47.5%' : 'width: 95%'}">
-                                <div>
-                                    <div ng-repeat="item in rumble.gpcondition track by $index"><span
-                                            ng-bind-html="item | gpconditionToString | decorate"></span></div>
-                                </div>
-                            </td>
-                            <td style="width: 50%" ng-if="rumble.llbgpcondition && unit.maxLevel == 99">
-                                <div>
-                                    <div ng-repeat="item in rumble.llbgpcondition track by $index"><span
-                                            ng-bind-html="item | gpconditionToString | decorate"></span></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr ng-if="rumble.gpspecial">
-                            <td width="5%"><span ng-if="rumble2">Character 1 </span>GP Burst</td>
-                            <td
-                                th:style="${rumble.llbgpspecial && unit.maxLevel == 99 ? 'width: 47.5%' : 'width: 95%'}">
-                                <div>
-                                    <div ng-repeat="item in rumble.gpspecial track by $index"><strong>Level {{::$index +
-                                            1}}: [{{::item.uses}} use{{item.uses != 1 ? "s" : ""}}] </strong> <span
-                                            ng-bind-html="item.effects | specialToString | decorate"></span></div>
-                                </div>
-                            </td>
-                            <td style="width: 50%" ng-if="rumble.llbgpspecial && unit.maxLevel == 99">
-                                <div>
-                                    <div ng-repeat="item in rumble.llbgpspecial track by $index"><strong>Level
-                                            {{::$index + 1}}: [{{::item.uses}} use{{item.uses != 1 ? "s" : ""}}]
-                                        </strong> <span ng-bind-html="item.effects | specialToString | decorate"></span>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table table-striped-column abilities" ng-if="rumble2">
-                    <tbody>
-                        <tr>
-                            <th colspan="2">Character 2</th>
-                        </tr>
-                        <tr ng-if="rumble.pattern">
-                            <td>Character 2 Attack Pattern</td>
-                            <td>
-                                <span ng-repeat="item in rumble2.pattern track by $index"><span
-                                        ng-bind-html="item | patternToString"></span>{{::$index !=
-                                    rumble2.pattern.length - 1 ? ' \u21e8 ' : ''}}</span>
-                            </td>
-                        </tr>
-                        <tr ng-if="rumble.target">
-                            <td>Character 2 Attack Target</td>
-                            <td>
-                                <span ng-bind-html="rumble2.target | targetToString"></span>
-                            </td>
-                        </tr>
-                        <tr ng-if="rumble.resilience">
-                            <td>Character 2 Resistance</td>
-                            <td>
-                                <span ng-repeat="item in rumble2.resilience track by $index"><span
-                                        ng-bind-html="item | resilienceToString | decorate"></span><br /></span>
-                            </td>
-                        </tr>
-                        <tr ng-if="rumble.ability">
-                            <td>Character 2 Ability</td>
-                            <td>
-                                <div>
-                                    <div ng-repeat="item in rumble2.ability track by $index"><strong>Level {{::$index +
-                                            1}}:</strong> <span
-                                            ng-bind-html="item.effects | abilityToString | decorate"></span></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr ng-if="rumble.special">
-                            <td>Character 2 Special</td>
-                            <td>
-                                <div>
-                                    <div ng-repeat="item in rumble2.special track by $index"><strong>Level {{::$index +
-                                            1}}: [{{::item.cooldown}} second cooldown] </strong> <span
-                                            ng-bind-html="item.effects | specialToString | decorate"></span></div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="panel panel-default" ng-hide="hidden.abilities" ng-if="details.festAbility && !rumble.ability">
-                <table class="table table-striped-column abilities">
-                    <tbody>
-                        <tr ng-if="details.festAttackPattern">
-                            <td>Pirate Festival Attack Pattern</td>
-                            <td colspan="2">
-                                <div>
-                                    <div ng-repeat="item in details.festAttackPattern track by $index"> <span
-                                            ng-bind-html="item | decorate"></span> </div>
-                                </div>
-                                <span class="notes" ng-if="details.festAttackPatternNotes"
-                                    ng-bind-html="details.festAttackPatternNotes | notes | decorate"></span>
-                            </td>
-                        </tr>
-                        <tr ng-if="details.festAttackTarget">
-                            <td>Pirate Festival Attack Target</td>
-                            <td colspan="2">
-                                <div>
-                                    <span ng-bind-html="details.festAttackTarget | decorate"></span>
-                                </div>
-            </div>
-            <span class="notes" ng-if="details.festAttackTargetNotes"
-                ng-bind-html="details.festAttackTargetNotes | notes | decorate"></span>
-            </td>
-            </tr>
-            <tr
-                ng-if="details.festResistance.hasOwnProperty('base') || details.festAbility.hasOwnProperty('base') || details.festSpecial.hasOwnProperty('base')">
-                <td width="5%"></td>
-                <td style="width: 47.5%"><strong>Base</strong></td>
-                <td style="width: 50%"><strong>Level Limit Break</strong></td>
-            </tr>
-            <tr ng-if="details.festResistance">
-                <td>Pirate Festival Resistance</td>
-                <td colspan="2" ng-if="!details.festResistance.hasOwnProperty('base')">
-                    <div>
-                        <span ng-bind-html="details.festResistance | decorate"></span>
+                                        <div ng-if="isPotentialHybrid">
+                                            <span class="badge badge-japan">Japan</span>
+                                            <div ng-bind-html="details.potential.japan | decorate"></div>
+                                            <span class="badge badge-global">Global</span>
+                                            <div ng-bind-html="details.potential.global | decorate"></div>
+                                        </div>
+                                        <span class="notes" ng-if="details.potentialNotes" ng-bind-html="details.potentialNotes | notes | decorate"></span>
+                                    </td>
+                                </tr>
+                                <tr ng-if="details.lastTap">
+                                    <td>Last Tap</td>
+                                    <td>
+                                        <strong>Condition:</strong> <span ng-bind-html="details.lastTap.condition | decorate"></span>
+                                        <div ng-repeat="item in details.lastTap.description track by $index"><strong>Level {{::$index + 1}}:</strong>
+                                        <span ng-bind-html="item | decorate"></span><br></div>
+                                        <span class="notes" ng-if="details.lastTapNotes" ng-bind-html="details.lastTapNotes | notes | decorate"></span>
+                                    </td>
+                                </tr>
+                                <tr ng-if="details.superTandem">
+                                    <td>Super Tandem</td>
+                                    <td>
+                                        <span ng-if="details.superTandem.condition"><strong>Condition:</strong> <span ng-bind-html="details.superTandem.condition | decorate"></span></span>
+                                        <div ng-repeat="item in details.superTandem.description track by $index"><strong>Level {{::$index + 1}} (<span ng-bind-html="details.superTandem.characterCondition[$index] | decorate"></span>):</strong>
+                                        <span ng-bind-html="item | decorate"></span><br></div>
+                                        <span class="notes" ng-if="details.superTandemNotes" ng-bind-html="details.superTandemNotes | notes | decorate"></span>
+                                        <add-super-tandem-query criteria="details.superTandem.characterCondition[4]" excluded-families="families"></add-super-tandem-query>
+                                    </td>
+                                </tr>
+                                <tr ng-if="details.superTandemBoost">
+                                    <td>Super Tandem Boost</td>
+                                    <td>
+                                        <span ng-if="details.superTandemBoost.condition"><strong>Condition:</strong> <span ng-bind-html="details.superTandemBoost.condition | decorate"></span></span>
+                                        <div ng-repeat="item in details.superTandemBoost.description track by $index"><strong>Level {{::$index + 1}} (<span ng-bind-html="details.superTandemBoost.characterCondition[$index] | decorate"></span>):</strong>
+                                        <span ng-bind-html="item | decorate"></span><br></div>
+                                        <span class="notes" ng-if="details.superTandemBoostNotes" ng-bind-html="details.superTandemBoostNotes | notes | decorate"></span>
+                                        <add-super-tandem-query criteria="details.superTandemBoost.characterCondition[4]" excluded-families="families"></add-super-tandem-query>
+                                    </td>
+                                </tr>
+                                <tr ng-if="details.rush">
+                                    <td>Rush</td>
+                                    <td border-spacing="0px">
+                                        <div ng-if="details.rush.condition"><strong>Condition:</strong> <div ng-bind-html="details.rush.condition | decorate"></div></div>
+                                        <table class="table table-striped-column abilities rush">
+                                            <tbody>
+                                                <tr ng-repeat-start="item in details.rush.description track by $index">
+                                                    <th colspan="2"><strong>Level {{::$index + 1}} (<span ng-bind-html="details.rush.characterCondition[$index] | decorate"></span>)</strong></th>
+                                                </tr>
+                                                <tr ng-repeat-end>
+                                                    <td width="50%"><!--strong>Level {{::$index + 1}} (<span ng-bind-html="details.rush.characterCondition[$index] | decorate"></span>):</strong-->
+                                                    <div ng-bind-html="item | decorate"></div></td>
+                                                    <td><div ng-bind-html="details.rush.stats[$index] | decorate"></div></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <span class="notes" ng-if="details.rushNotes" ng-bind-html="details.rushNotes | notes | decorate"></span>
+                                        <add-super-tandem-query criteria="details.rush.characterCondition[4]" excluded-families="families"></add-super-tandem-query>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-        </div>
-        <span class="notes" ng-if="details.festResistanceNotes"
-            ng-bind-html="details.festResistanceNotes | notes | decorate"></span>
-        </td>
-        <td ng-if="details.festResistance.hasOwnProperty('base')">
-            <div>
-                <span ng-bind-html="details.festResistance.base | decorate"></span>
-            </div>
-    </div>
-    <span class="notes" ng-if="details.festResistanceNotes"
-        ng-bind-html="details.festResistanceNotes | notes | decorate"></span>
-    </td>
-    <td ng-if="details.festResistance.hasOwnProperty('llbbase')">
-        <div>
-            <span ng-bind-html="details.festResistance.llbbase | decorate"></span>
-        </div>
-</div>
-<span class="notes" ng-if="details.festResistanceNotes"
-    ng-bind-html="details.festResistanceNotes | notes | decorate"></span>
-</td>
-</tr>
-<tr ng-if="details.festAbility">
-    <td>Pirate Festival Ability</td>
-    <td colspan="2" ng-if="!details.festAbility.hasOwnProperty('base')">
-        <div>
-            <div ng-repeat="item in details.festAbility track by $index"><strong>Level {{$index + 1}}:</strong>
-                <span ng-bind-html="item | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festAbilityNotes"
-            ng-bind-html="details.festAbilityNotes | notes | decorate"></span>
-    </td>
-    <td ng-if="details.festAbility.hasOwnProperty('base')">
-        <div>
-            <div ng-repeat="item in details.festAbility.base track by $index"><strong>Level {{$index + 1}}:</strong>
-                <span ng-bind-html="item | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festAbilityNotes"
-            ng-bind-html="details.festAbilityNotes | notes | decorate"></span>
-    </td>
-    <td ng-if="details.festAbility.hasOwnProperty('llbbase')">
-        <div>
-            <div ng-repeat="item in details.festAbility.llbbase track by $index"><strong>Level {{$index + 1}}:</strong>
-                <span ng-bind-html="item | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festAbilityNotes"
-            ng-bind-html="details.festAbilityNotes | notes | decorate"></span>
-    </td>
-</tr>
-<tr ng-if="details.festSpecial">
-    <td>Pirate Festival Special</td>
-    <td colspan="2" ng-if="!details.festSpecial.hasOwnProperty('base')">
-        <div>
-            <div ng-repeat="item in details.festSpecial track by $index"><strong>Level {{$index + 1}}:
-                    [{{item.cooldown}} seconds] </strong>
-                <span ng-bind-html="item.description | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festSpecialNotes"
-            ng-bind-html="details.festSpecialNotes | notes | decorate"></span>
-    </td>
-    <td ng-if="details.festSpecial.hasOwnProperty('base')">
-        <div>
-            <div ng-repeat="item in details.festSpecial.base track by $index"><strong>Level {{$index + 1}}:
-                    [{{item.cooldown}} seconds] </strong>
-                <span ng-bind-html="item.description | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festSpecialNotes"
-            ng-bind-html="details.festSpecialNotes | notes | decorate"></span>
-    </td>
-    <td ng-if="details.festSpecial.hasOwnProperty('llbbase')">
-        <div>
-            <div ng-repeat="item in details.festSpecial.llbbase track by $index"><strong>Level {{$index + 1}}:
-                    [{{item.cooldown}} seconds] </strong>
-                <span ng-bind-html="item.description | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festSpecialNotes"
-            ng-bind-html="details.festSpecialNotes | notes | decorate"></span>
-    </td>
-</tr>
+                    <div class="panel panel-default" ng-hide="hidden.abilities"  ng-if="unit.maxLevel == 99">
+                        <table class="table table-striped-column abilities">
+                            <tbody>
+                                <tr>
+                                    <td width="10%">Level Limit Break</td>
+                                    <td>
+                                        <div ng-repeat="stage in details.lLimit track by $index" ng-if="details.lLimit">
+                                            <div><strong>Level {{::$index + 1}}:</strong> Increase Max Level to {{::[105, 110, 120, 130, 150][$index]}}</div>
+                                            <span ng-if="stage.captain.base" class="badge badge-base">Base Captain</span><div ng-if="stage.captain.base" ng-bind-html="stage.captain.base | decorate"></div>
+                                            <span ng-if="stage.captain.level1" class="badge badge-level1">LB Level 1 Captain</span><div ng-if="stage.captain.level1" ng-bind-html="stage.captain.level1 | decorate"></div>
+                                            <span ng-if="stage.captain.level2" class="badge badge-level2">LB Level 2 Captain</span><div ng-if="stage.captain.level2" ng-bind-html="stage.captain.level2 | decorate"></div>
+                                            <span ng-if="stage.captain.level6" class="badge badge-level6">LB Level 6 Captain</span><div ng-if="stage.captain.level6" ng-bind-html="stage.captain.level6 | decorate"></div>
+                                            <span ng-if="stage.captain.character1" class="badge badge-character1">Character 1 Captain</span><div ng-if="stage.captain.character1" ng-bind-html="stage.captain.character1 | decorate"></div>
+                                            <span ng-if="stage.captain.character2" class="badge badge-character2">Character 2 Captain</span><div ng-if="stage.captain.character2" ng-bind-html="stage.captain.character2 | decorate"></div>
+                                            <span ng-if="stage.captain.combined" class="badge badge-combined">Dual Character Captain</span><div ng-if="stage.captain.combined" ng-bind-html="stage.captain.combined | decorate"></div>
+                                            <span ng-if="stage.sailor.base" class="badge badge-sbase">Base Sailor</span><div ng-if="stage.sailor.base" ng-bind-html="stage.sailor.base | decorate"></div>
+                                            <span ng-if="stage.sailor.base2" class="badge badge-sbase2">Base Sailor 2</span><div ng-if="stage.sailor.base2" ng-bind-html="stage.sailor.base2 | decorate"></div>
+                                            <span ng-if="stage.sailor.level1" class="badge badge-slevel1">LB Level 1 Sailor</span><div ng-if="stage.sailor.level1" ng-bind-html="stage.sailor.level1 | decorate"></div>
+                                            <span ng-if="stage.sailor.level2" class="badge badge-slevel2">LB Level 2 Sailor</span><div ng-if="stage.sailor.level2" ng-bind-html="stage.sailor.level2 | decorate"></div>
+                                            <span ng-if="stage.sailor.character1" class="badge badge-character1">Character 1 Sailor</span><div ng-if="stage.sailor.character1" ng-bind-html="stage.sailor.character1 | decorate"></div>
+                                            <span ng-if="stage.sailor.character2" class="badge badge-character2">Character 2 Sailor</span><div ng-if="stage.sailor.character2" ng-bind-html="stage.sailor.character2 | decorate"></div>
+                                            <span ng-if="stage.sailor.combined" class="badge badge-combined">Dual Character Sailor</span><div ng-if="stage.sailor.combined" ng-bind-html="stage.sailor.combined | decorate"></div>
+                                            <span ng-if="stage.special.base" class="badge badge-slevel1">Base Special</span><div ng-if="stage.special.base && !isLLBSpecialStaged[$index]" ng-bind-html="stage.special.base | decorate"></div>
+                                            <span ng-if="stage.special.level1" class="badge badge-slevel1">Level 1 Special</span><div ng-if="stage.special.level1 && !isLLBSpecialStaged[$index]" ng-bind-html="stage.special.level1 | decorate"></div>
+                                            <span ng-if="stage.special.level2" class="badge badge-slevel2">Level 2 Special</span><div ng-if="stage.special.level2 && !isLLBSpecialStaged[$index]" ng-bind-html="stage.special.level2 | decorate"></div>
+                                            <span ng-if="stage.special.character1" class="badge badge-character1">Character 1 Special</span><div ng-if="stage.special.character1 && !isLLBSpecialStaged[$index]" ng-bind-html="stage.special.character1 | decorate"></div>
+                                            <span ng-if="stage.special.character2" class="badge badge-character2">Character 2 Special</span><div ng-if="stage.special.character2 && !isLLBSpecialStaged[$index]" ng-bind-html="stage.special.character2 | decorate"></div>
+                                            <span ng-if="stage.special.combined" class="badge badge-combined">Combined Special</span><div ng-if="stage.special.combined && !isLLBSpecialStaged[$index]" ng-bind-html="stage.special.combined | decorate"></div>
+                                            <span ng-if="stage.special && isLLBSpecialStaged[$index]"><br>
+                                                <div ng-repeat="stage1 in stage.special.base track by $index">
+                                                    <strong>Stage {{::$index + 1}}</strong>
+                                                    ({{::stage1.cooldown.length ? stage1.cooldown[0] : stage1.cooldown}}{{::stage1.cooldown.length ? ' \u2192 ' + stage1.cooldown[1] : ''}} turns) <span ng-if="unit.limitCD != 0"><strong>➤</strong>
+                                                    ({{::stage1.cooldown.length ? stage1.cooldown[0] - unit.limitCD : stage1.cooldown}}{{::stage1.cooldown.length ? ' \u2192 ' + (stage1.cooldown[1] - unit.limitCD) : ''}} turns)</span><span ng-if="unit.limitexCD != 0 && unit.limitexCD != unit.limitCD"><strong>➤</strong>
+                                                    ({{::stage1.cooldown.length ? stage1.cooldown[0] - unit.limitexCD : stage1.cooldown}}{{::stage1.cooldown.length ? ' \u2192 ' + (stage1.cooldown[1] - unit.limitexCD) : ''}} turns)</span>:
+                                                    <span ng-bind-html="stage1.description | decorate"></span>
+                                                </div>
+                                            </span>
+                                            <div ng-if="stage.rResilience" class="badge badge-slevel1">Rumble Resilience</div><br ng-if="stage.rResilience"><span ng-if="stage.rResilience" ng-repeat="item in rumble.llbresilience track by $index"><span ng-bind-html="item | resilienceToString | decorate"></span><br></span>
+                                            <div ng-if="stage.rAbility" class="badge badge-slevel1">Rumble Ability</div><div ng-if="stage.rAbility" ng-bind-html="rumble.llbability[rumble.llbability.length-1].effects | abilityToString | decorate"></div>
+                                            <div ng-if="stage.rSpecial" class="badge badge-slevel1">Rumble Special</div><div ng-if="stage.rSpecial" ng-bind-html="rumble.llbspecial[rumble.llbspecial.length-1].effects | abilityToString | decorate"></div>
+                                            <div ng-if="stage.rSuperSpecial" class="badge badge-slevel1">Rumble Super Special</div><br ng-if="stage.rSuperSpecial"><span ng-if="stage.rSuperSpecial" ng-repeat="item in rumble.llbsuperspecial track by $index"><span ng-bind-html="item.effects | superspecialToString | decorate"></span><br></span>
+                                            <div ng-if="stage.gpAbility" class="badge badge-slevel1">Grand Party Abilty</div><div ng-if="stage.gpAbility" ng-bind-html="rumble.llbgpability[rumble.llbgpability.length-1].effects | abilityToString | decorate"></div>
+                                            <div ng-if="stage.gpSpecial" class="badge badge-slevel1">Grand Party Special</div><div ng-if="stage.gpSpecial" ng-bind-html="rumble.llbgpspecial[rumble.llbgpspecial.length-1].effects | abilityToString | decorate"></div>
+                                            <br ng-if="$index != 4">
+                                        </div>
+                                        <div ng-repeat="x in [].constructor(5) track by $index" ng-if="!details.lLimit">
+                                            <strong>Level {{::$index + 1}}:</strong> Increase Max Level to {{::[105, 110, 120, 130, 150][$index]}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Pirate Rumble -->
+                    <!-- Use rumble.json if available -->
 
-<ng-container ng-if="details.festSuperSpecial">
-    <tr
-        ng-if="!(details.festResistance.hasOwnProperty('base') || details.festAbility.hasOwnProperty('base') || details.festSpecial.hasOwnProperty('base')) && details.festSuperSpecial.hasOwnProperty('base')">
-        <td width="5%"></td>
-        <td style="width: 47.5%"><strong>Base</strong></td>
-        <td style="width: 50%"><strong>Level Limit Break</strong></td>
-    </tr>
-    <tr>
-        <td>Pirate Festival Super Special</td>
-        <td colspan="2" ng-if="!details.festSuperSpecial.hasOwnProperty('base')">
-            <div>
-                <span ng-bind-html="details.festSuperSpecial.description | decorate"></span>
-            </div>
-            </div>
-        </td>
-        <td ng-if="details.festSuperSpecial.hasOwnProperty('base')">
-            <div>
-                <span ng-bind-html="details.festSuperSpecial.base.description | decorate"></span>
-            </div>
-            </div>
-        </td>
-        <td ng-if="details.festSuperSpecial.hasOwnProperty('llbbase')">
-            <div>
-                <span ng-bind-html="details.festSuperSpecial.llbbase.description | decorate"></span>
-            </div>
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>Super Special Condition</td>
-        <td colspan="2" ng-if="!details.festSuperSpecial.hasOwnProperty('base')">
-            <div>
-                <span ng-bind-html="details.festSuperSpecial.condition | decorate"></span>
-            </div>
-            </div>
-        </td>
-        <td ng-if="details.festSuperSpecial.hasOwnProperty('base')">
-            <div>
-                <span ng-bind-html="details.festSuperSpecial.base.condition | decorate"></span>
-            </div>
-            </div>
-        </td>
-        <td ng-if="details.festSuperSpecial.hasOwnProperty('llbbase')">
-            <div>
-                <span ng-bind-html="details.festSuperSpecial.llbbase.condition | decorate"></span>
-            </div>
-            </div>
-        </td>
-    </tr>
-</ng-container>
+                    <h3 id="rumbleSection" class="page-header" ng-hide="hidden.abilities" ng-if="rumble">Pirate Rumble</h3>
+                    <div class="panel panel-default" ng-hide="hidden.abilities" ng-if="rumble">
+                        <table class="table table-striped-column abilities">
+                            <tbody>
+                                <tr ng-if="rumble2"><th colspan="2">Character 1</th></tr>
+                                <tr ng-if="rumble.pattern">
+                                    <td width="5%"><span ng-if="rumble2">Character 1 </span>Attack Pattern</td>
+                                    <td colspan="2"><span ng-repeat="item in rumble.pattern track by $index"><span ng-bind-html="item | patternToString"></span>{{::$index != rumble.pattern.length - 1 ? ' \u21e8 ' : ''}}</span></td>
+                                </tr>
+                                <tr ng-if="rumble.target">
+                                    <td width="5%"><span ng-if="rumble2">Character 1 </span>Attack Target</td>
+                                    <td colspan="2"><span ng-bind-html="rumble.target | targetToString"></span></td>
+                                </tr>
+                                <tr ng-if="(rumble.llbresilience || rumble.llbability || rumble.llbspecial) && unit.maxLevel == 99">
+                                    <td width="5%"></td>
+                                    <td style="width: 47.5%"><strong>Base</strong></td>
+                                    <td style="width: 50%"><strong>Level Limit Break</strong></td>
+                                </tr>
+                                <tr ng-if="rumble.resilience || (rumble.llbresilience && unit.maxLevel == 99)">
+                                    <td width="5%"><span ng-if="rumble2">Character 1 </span>Resistance</td>
+                                    <td><span ng-repeat="item in rumble.resilience track by $index"><span ng-bind-html="item | resilienceToString | decorate"></span><br></span></td>
+                                    <td ng-if="rumble.llbresilience && unit.maxLevel == 99"><span ng-repeat="item in rumble.llbresilience track by $index"><span ng-bind-html="item | resilienceToString | decorate"></span><br></span></td>
+                                </tr>
+                                <tr ng-if="rumble.ability || (rumble.llbability && unit.maxLevel == 99)">
+                                    <td width="5%"><span ng-if="rumble2">Character 1 </span>Rumble Ability</td>
+                                    <td><div ng-repeat="item in rumble.ability track by $index"><strong>Level {{::$index + 1}}:</strong> <span ng-bind-html="item.effects | abilityToString | decorate"></span></div></td>
+                                    <td ng-if="rumble.llbability && unit.maxLevel == 99"><div ng-repeat="item in rumble.llbability track by $index"><strong>Level {{::$index + 1}}:</strong> <span ng-bind-html="item.effects | abilityToString | decorate"></span></div></td>
+                                </tr>
+                                <tr ng-if="rumble.special || (rumble.llbspecial && unit.maxLevel == 99)">
+                                    <td width="5%"><span ng-if="rumble2">Character 1 </span>Rumble Special</td>
+                                    <td><div ng-repeat="item in rumble.special track by $index"><strong>Level {{::$index + 1}}: [{{::item.cooldown}} second cooldown] </strong> <span ng-bind-html="item.effects | specialToString | decorate"></span></div></td>
+                                    <td ng-if="rumble.llbspecial && unit.maxLevel == 99"><div ng-repeat="item in rumble.llbspecial track by $index"><strong>Level {{::$index + 1}}: [{{::item.cooldown}} second cooldown] </strong> <span ng-bind-html="item.effects | specialToString | decorate"></span></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-striped-column abilities" ng-if="rumble.superspecial">
+                            <tbody>
+                                <tr ng-if="!rumble.llbresilience && !rumble.llbability && !rumble.llbspecial && rumble.superspecial && unit.maxLevel == 99">
+                                    <td width="5%"></td>
+                                    <td style="width: 47.5%"><strong>Base</strong></td>
+                                    <td style="width: 50%"><strong>Level Limit Break</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="5%"><span ng-if="rumble2">Character 1 </span>Super Special Condition</td>
+                                    <td style="width: 47.5%"><div ng-repeat="item in rumble.superspecial track by $index"><span ng-bind-html="item.condition | superspecialconditionToString | decorate"></span></div></td>
+                                    <td style="width: 50%" ng-if="unit.maxLevel == 99"><div ng-repeat="item in rumble.llbsuperspecial track by $index"><span ng-bind-html="item.condition | superspecialconditionToString | decorate"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td width="5%"><span ng-if="rumble2">Character 1 </span>Rumble Super Special</td>
+                                    <td><div ng-repeat="item in rumble.superspecial track by $index"><span ng-bind-html="item.effects | superspecialToString | decorate"></span></div></td>
+                                    <td ng-if="unit.maxLevel == 99"><div ng-repeat="item in rumble.llbsuperspecial track by $index"><span ng-bind-html="item.effects | superspecialToString | decorate"></span></div></td>
+                                </tr>
 
-<tr ng-if="details.festAbilityGP">
-    <td>Grand Party</td>
-    <td>Ability</td>
-    <td>Special</td>
-</tr>
-<tr ng-if="details.festAbilityGP && details.festAbilityGP.hasOwnProperty('base')">
-    <td>-</td>
-    <td>
-        <div>
-            <div ng-repeat="item in details.festAbilityGP.base track by $index"><strong>Level {{$index + 1}}:</strong>
-                <span ng-bind-html="item.festGPAbility | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festAbilityGPNotes"
-            ng-bind-html="details.festAbilityGPNotes | notes | decorate"></span>
-    </td>
-    <td>
-        <div>
-            <div ng-repeat="item in details.festAbilityGP.base track by $index"><strong>Level {{$index + 1}}:
-                    [{{item.uses}} use{{"" ? item.uses == 1 : "s"}}] </strong>
-                <span ng-bind-html="item.festGPSpecial | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festAbilityGPNotes"
-            ng-bind-html="details.festAbilityGPNotes | notes | decorate"></span>
-    </td>
-</tr>
-<tr ng-if="details.festAbilityGP && details.festAbilityGP.hasOwnProperty('llbbase')">
-    <td>-</td>
-    <td>
-        <div>
-            <div ng-repeat="item in details.festAbilityGP.llbbase track by $index"><strong>Level {{$index +
-                    1}}:</strong>
-                <span ng-bind-html="item.festGPAbility | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festAbilityGPNotes"
-            ng-bind-html="details.festAbilityGPNotes | notes | decorate"></span>
-    </td>
-    <td>
-        <div>
-            <div ng-repeat="item in details.festAbilityGP.llbbase track by $index"><strong>Level {{$index + 1}}:
-                    [{{item.uses}} use{{"" ? item.uses == 1 : "s"}}] </strong>
-                <span ng-bind-html="item.festGPSpecial | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festAbilityGPNotes"
-            ng-bind-html="details.festAbilityGPNotes | notes | decorate"></span>
-    </td>
-</tr>
-<tr ng-if="details.festAbilityGP && !details.festAbilityGP.hasOwnProperty('base')">
-    <td>-</td>
-    <td>
-        <div>
-            <div ng-repeat="item in details.festAbilityGP track by $index"><strong>Level {{$index + 1}}:</strong>
-                <span ng-bind-html="item.festGPAbility | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festAbilityGPNotes"
-            ng-bind-html="details.festAbilityGPNotes | notes | decorate"></span>
-    </td>
-    <td>
-        <div>
-            <div ng-repeat="item in details.festAbilityGP track by $index"><strong>Level {{$index + 1}}: [{{item.uses}}
-                    use{{"" ? item.uses == 1 : "s"}}] </strong>
-                <span ng-bind-html="item.festGPSpecial | decorate"></span><br>
-            </div>
-        </div>
-        <span class="notes" ng-if="details.festAbilityGPNotes"
-            ng-bind-html="details.festAbilityGPNotes | notes | decorate"></span>
-    </td>
-</tr>
-<tr ng-if="details.festAbilityGPCondition">
-    <td>GP Burst Condition</td>
-    <td colspan="2">
-        <div>
-            <span ng-bind-html="details.festAbilityGPCondition | decorate"></span>
-        </div>
-        </div>
-    </td>
-</tr>
-</tbody>
-</table>
-</div>
+                            </tbody>
+                        </table>
+                        <table class="table table-striped-column abilities" ng-if="rumble2">
+                            <tbody>
+                                <tr><th colspan="2">Character 2</th></tr>
+                                <tr ng-if="rumble2.pattern">
+                                    <td width="5%">Character 2 Attack Pattern</td>
+                                    <td colspan="2"><span ng-repeat="item in rumble2.pattern track by $index"><span ng-bind-html="item | patternToString"></span>{{::$index != rumble2.pattern.length - 1 ? ' \u21e8 ' : ''}}</span></td>
+                                </tr>
+                                <tr ng-if="rumble2.target">
+                                    <td width="5%">Character 2 Attack Target</td>
+                                    <td colspan="2"><span ng-bind-html="rumble2.target | targetToString"></span></td>
+                                </tr>
+                                <tr ng-if="(rumble2.llbresilience || rumble2.llbability || rumble2.llbspecial) && unit.maxLevel == 99">
+                                    <td width="5%"></td>
+                                    <td style="width: 47.5%"><strong>Base</strong></td>
+                                    <td style="width: 50%"><strong>Level Limit Break</strong></td>
+                                </tr>
+                                <tr ng-if="rumble2.resilience || (rumble2.llbresilience && unit.maxLevel == 99)">
+                                    <td width="5%">Character 2 Resistance</td>
+                                    <td><span ng-repeat="item in rumble2.resilience track by $index"><span ng-bind-html="item | resilienceToString | decorate"></span><br></span></td>
+                                    <td ng-if="rumble2.llbresilience && unit.maxLevel == 99"><span ng-repeat="item in rumble2.llbresilience track by $index"><span ng-bind-html="item | resilienceToString | decorate"></span><br></span></td>
+                                </tr>
+                                <tr ng-if="rumble2.ability || (rumble2.llbability && unit.maxLevel == 99)">
+                                    <td width="5%">Character 2 Rumble Ability</td>
+                                    <td><div ng-repeat="item in rumble2.ability track by $index"><strong>Level {{::$index + 1}}:</strong> <span ng-bind-html="item.effects | abilityToString | decorate"></span></div></td>
+                                    <td ng-if="rumble2.llbability && unit.maxLevel == 99"><div ng-repeat="item in rumble2.llbability track by $index"><strong>Level {{::$index + 1}}:</strong> <span ng-bind-html="item.effects | abilityToString | decorate"></span></div></td>
+                                </tr>
+                                <tr ng-if="rumble2.special || (rumble2.llbspecial && unit.maxLevel == 99)">
+                                    <td width="5%">Character 2 Rumble Special</td>
+                                    <td><div ng-repeat="item in rumble2.special track by $index"><strong>Level {{::$index + 1}}: [{{::item.cooldown}} second cooldown] </strong> <span ng-bind-html="item.effects | specialToString | decorate"></span></div></td>
+                                    <td ng-if="rumble2.llbspecial && unit.maxLevel == 99"><div ng-repeat="item in rumble2.llbspecial track by $index"><strong>Level {{::$index + 1}}: [{{::item.cooldown}} second cooldown] </strong> <span ng-bind-html="item.effects | specialToString | decorate"></span></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-striped-column abilities" ng-if="rumble2.superspecial">
+                            <tbody>
+                                <tr ng-if="!rumble2.llbresilience && !rumble2.llbability && !rumble2.llbspecial && rumble2.superspecial && unit.maxLevel == 99">
+                                    <td width="5%"></td>
+                                    <td style="width: 47.5%"><strong>Base</strong></td>
+                                    <td style="width: 50%"><strong>Level Limit Break</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="5%">Character 2 </span>Super Special Condition</td>
+                                    <td style="width: 47.5%"><div ng-repeat="item in rumble2.superspecial track by $index"><span ng-bind-html="item.condition | superspecialconditionToString | decorate"></span></div></td>
+                                    <td style="width: 50%" ng-if="unit.maxLevel == 99"><div ng-repeat="item in rumble2.llbsuperspecial track by $index"><span ng-bind-html="item.condition | superspecialconditionToString | decorate"></span></div></td>
+                                </tr>
+                                <tr>
+                                    <td width="5%">Character 2 </span>Rumble Super Special</td>
+                                    <td><div ng-repeat="item in rumble2.superspecial track by $index"><span ng-bind-html="item.effects | superspecialToString | decorate"></span></div></td>
+                                    <td ng-if="unit.maxLevel == 99"><div ng-repeat="item in rumble2.llbsuperspecial track by $index"><span ng-bind-html="item.effects | superspecialToString | decorate"></span></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pirate Rumble -->
+                    <!-- If rumble.json is not available, then use details.js if available -->
+
+                    <h3 id="rumbleSection" class="page-header" ng-hide="hidden.abilities" ng-if="!rumble && (details.festAttackPattern || details.festAttackTarget || details.festResistance || details.festAbility || details.festSpecial || details.festSuperSpecial)">Pirate Rumble</h3>
+                    <div class="panel panel-default" ng-hide="hidden.abilities" ng-if="!rumble && (details.festAttackPattern || details.festAttackTarget || details.festResistance || details.festAbility || details.festSpecial || details.festSuperSpecial)">
+                        <table class="table table-striped-column abilities" ng-if="details.festAttackPattern || details.festAttackTarget || details.festResistance || details.festAbility || details.festSpecial">
+                            <tbody>
+                                <tr ng-if="details.festAttackPattern">
+                                    <td width="5%">Attack Pattern</td>
+                                    <td colspan="2"><div ng-repeat="item in details.festAttackPattern track by $index"><span ng-bind-html="item | decorate"></span></div></td>
+                                </tr>
+                                <tr ng-if="details.festAttackTarget">
+                                    <td width="5%">Attack Target</td>
+                                    <td colspan="2"><span ng-bind-html="details.festAttackTarget | decorate"></span></td>
+                                </tr>
+                                <tr ng-if="details.festResistance.hasOwnProperty('base') || details.festAbility.hasOwnProperty('base') || details.festSpecial.hasOwnProperty('base')">
+                                    <td width="5%"></td>
+                                    <td style="width: 47.5%"><strong>Base</strong></td>
+                                    <td style="width: 50%"><strong>Level Limit Break</strong></td>
+                                </tr>
+                                <tr ng-if="details.festResistance">
+                                    <td width="5%">Resistance</td>
+                                    <td ng-if="!details.festResistance.hasOwnProperty('base')"><span ng-bind-html="details.festResistance | decorate"></span></td>
+                                    <td ng-if="details.festResistance.hasOwnProperty('base')"><span ng-bind-html="details.festResistance.base | decorate"></span></td>
+                                    <td ng-if="details.festResistance.hasOwnProperty('llbbase')"><span ng-bind-html="details.festResistance.llbbase | decorate"></span></td>
+                                </tr>
+                                <tr ng-if="details.festAbility">
+                                    <td width="5%">Rumble Ability</td>
+                                    <td ng-if="!details.festAbility.hasOwnProperty('base')"><div ng-repeat="item in details.festAbility track by $index"><strong>Level {{$index + 1}}: </strong><span ng-bind-html="item | decorate"></span><br></div></td>
+                                    <td ng-if="details.festAbility.hasOwnProperty('base')"><div ng-repeat="item in details.festAbility.base track by $index"><strong>Level {{$index + 1}}: </strong><span ng-bind-html="item | decorate"></span><br></div></td>
+                                    <td ng-if="details.festAbility.hasOwnProperty('llbbase')"><div ng-repeat="item in details.festAbility.llbbase track by $index"><strong>Level {{$index + 1}}: </strong><span ng-bind-html="item | decorate"></span><br></div></td>
+                                </tr>
+                                <tr ng-if="details.festSpecial">
+                                    <td width="5%">Rumble Special</td>
+                                    <td ng-if="!details.festSpecial.hasOwnProperty('base')"><div ng-repeat="item in details.festSpecial track by $index"><strong>Level {{$index + 1}}: [{{item.cooldown}} seconds] </strong><span ng-bind-html="item.description | decorate"></span><br></div></td>
+                                    <td ng-if="details.festSpecial.hasOwnProperty('base')"><div ng-repeat="item in details.festSpecial.base track by $index"><strong>Level {{$index + 1}}: [{{item.cooldown}} seconds] </strong><span ng-bind-html="item.description | decorate"></span><br></div></td>
+                                    <td ng-if="details.festSpecial.hasOwnProperty('llbbase')"><div ng-repeat="item in details.festSpecial.llbbase track by $index"><strong>Level {{$index + 1}}: [{{item.cooldown}} seconds] </strong><span ng-bind-html="item.description | decorate"></span><br></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-striped-column abilities" ng-if="details.festSuperSpecial">
+                            <tbody>
+                                <tr ng-if="!details.festResistance.hasOwnProperty('base') || !details.festAbility.hasOwnProperty('base') || !details.festSpecial.hasOwnProperty('base')">
+                                    <td width="5%"></td>
+                                    <td style="width: 47.5%"><strong>Base</strong></td>
+                                    <td style="width: 50%"><strong>Level Limit Break</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Super Special Condition</td>
+                                    <td style="width: 47.5%"><span ng-bind-html="details.festSuperSpecial.base.condition | decorate"></span></td>
+                                    <td style="width: 50%"><span ng-bind-html="details.festSuperSpecial.llbbase.condition | decorate"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Rumble Super Special</td>
+                                    <td><span ng-bind-html="details.festSuperSpecial.base.description | decorate"></span></td>
+                                    <td><span ng-bind-html="details.festSuperSpecial.llbbase.description | decorate"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Grand Party -->
+                    <!-- Use rumble.json if available -->
+
+                    <h3 id="rumbleSection" class="page-header" ng-hide="hidden.abilities" ng-if="rumble.gpability || rumble.gpcondition || rumble.gpspecial">Grand Party</h3>
+                    <div class="panel panel-default" ng-hide="hidden.abilities" ng-if="rumble.gpability || rumble.gpcondition || rumble.gpspecial">
+                        <table class="table table-striped-column abilities">
+                            <tbody>
+                                <tr ng-if="rumble2"><th colspan="2">Character 1</th></tr>
+                                <tr ng-if="(rumble.llbgpability || rumble.llbgpcondition || rumble.llbgpspecial) && unit.maxLevel == 99">
+                                    <td width="5%"></td>
+                                    <td style="width: 47.5%"><strong>Base</strong></td>
+                                    <td style="width: 50%"><strong>Level Limit Break</strong></td>
+                                </tr>
+                                <tr ng-if="rumble.gpability || (rumble.llbgpability && unit.maxLevel == 99)">
+                                    <td width="5%"><span ng-if="rumble2">Character 1 </span>Leader Skill</td>
+                                    <td><div ng-repeat="item in rumble.gpability track by $index"><strong>Level {{::$index + 1}}: </strong> <span ng-bind-html="item.effects | abilityToString | decorate"></span></div></td>
+                                    <td ng-if="rumble.llbgpability && unit.maxLevel == 99"><div ng-repeat="item in rumble.llbgpability track by $index"><strong>Level {{::$index + 1}}: </strong> <span ng-bind-html="item.effects | abilityToString | decorate"></span></div></td>
+                                </tr>
+                                <tr ng-if="rumble.gpcondition || (rumble.llbgpcondition && unit.maxLevel == 99)">
+                                    <td width="5%"><span ng-if="rumble2">Character 1 </span>Burst Condition</td>
+                                    <td><div ng-repeat="item in rumble.gpcondition track by $index"><span ng-bind-html="item | gpconditionToString | decorate"></span></div></td>
+                                    <td ng-if="rumble.llbgpcondition && unit.maxLevel == 99"><div ng-repeat="item in rumble.llbgpcondition track by $index"><span ng-bind-html="item | gpconditionToString | decorate"></span></div></td>
+                                </tr>
+                                <tr ng-if="rumble.gpspecial || (rumble.llbgpspecial && unit.maxLevel == 99)">
+                                    <td width="5%"><span ng-if="rumble2">Character 1 </span>Burst</td>
+                                    <td><div ng-repeat="item in rumble.gpspecial track by $index"><strong>Level {{::$index + 1}}: [{{::item.uses}} use{{item.uses != 1 ? "s" : ""}}] </strong> <span ng-bind-html="item.effects | specialToString | decorate"></span></div></td>
+                                    <td ng-if="rumble.llbgpspecial && unit.maxLevel == 99"><div ng-repeat="item in rumble.llbgpspecial track by $index"><strong>Level {{::$index + 1}}: [{{::item.uses}} use{{item.uses != 1 ? "s" : ""}}] </strong> <span ng-bind-html="item.effects | specialToString | decorate"></span></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-striped-column abilities" ng-if="rumble2">
+                            <tbody>
+                                <tr><th colspan="2">Character 2</th></tr>
+                                <tr ng-if="(rumble2.llbgpability || rumble2.llbgpcondition || rumble2.llbgpspecial) && unit.maxLevel == 99">
+                                    <td width="5%"></td>
+                                    <td style="width: 47.5%"><strong>Base</strong></td>
+                                    <td style="width: 50%"><strong>Level Limit Break</strong></td>
+                                </tr>
+                                <tr ng-if="rumble2.gpability || (rumble2.llbgpability && unit.maxLevel == 99)">
+                                    <td width="5%">Character 2 Leader Skill</td>
+                                    <td><div ng-repeat="item in rumble2.gpability track by $index"><strong>Level {{::$index + 1}}: </strong> <span ng-bind-html="item.effects | abilityToString | decorate"></span></div></td>
+                                    <td ng-if="rumble2.llbgpability && unit.maxLevel == 99"><div ng-repeat="item in rumble2.llbgpability track by $index"><strong>Level {{::$index + 1}}: </strong> <span ng-bind-html="item.effects | abilityToString | decorate"></span></div></td>
+                                </tr>
+                                <tr ng-if="rumble2.gpcondition || (rumble2.llbgpcondition && unit.maxLevel == 99)">
+                                    <td width="5%">Character 2 Burst Condition</td>
+                                    <td><div ng-repeat="item in rumble2.gpcondition track by $index"><span ng-bind-html="item | gpconditionToString | decorate"></span></div></td>
+                                    <td ng-if="rumble2.llbgpcondition && unit.maxLevel == 99"><div ng-repeat="item in rumble2.llbgpcondition track by $index"><span ng-bind-html="item | gpconditionToString | decorate"></span></div></td>
+                                </tr>
+                                <tr ng-if="rumble2.gpspecial || (rumble2.llbgpspecial && unit.maxLevel == 99)">
+                                    <td width="5%">Character 2 Burst</td>
+                                    <td><div ng-repeat="item in rumble2.gpspecial track by $index"><strong>Level {{::$index + 1}}: [{{::item.uses}} use{{item.uses != 1 ? "s" : ""}}] </strong> <span ng-bind-html="item.effects | specialToString | decorate"></span></div></td>
+                                    <td ng-if="rumble2.llbgpspecial && unit.maxLevel == 99"><div ng-repeat="item in rumble2.llbgpspecial track by $index"><strong>Level {{::$index + 1}}: [{{::item.uses}} use{{item.uses != 1 ? "s" : ""}}] </strong> <span ng-bind-html="item.effects | specialToString | decorate"></span></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Grand Party -->
+                    <!-- If rumble.json is not available, then use details.js if available -->
+
+                    <h3 id="rumbleSection" class="page-header" ng-hide="hidden.abilities" ng-if="!rumble.gpability && !rumble.gpcondition && !rumble.gpspecial && (details.festAbilityGP || details.festAbilityGPCondition)">Grand Party</h3>
+                    <div class="panel panel-default" ng-hide="hidden.abilities" ng-if="!rumble.gpability && !rumble.gpcondition && !rumble.gpspecial && (details.festAbilityGP || details.festAbilityGPCondition)">
+                        <table class="table table-striped-column abilities">
+                            <tbody>
+                                <tr ng-if="details.festAbilityGP.hasOwnProperty('base') || details.festAbilityGPCondition.hasOwnProperty('base')">
+                                    <td width="5%"></td>
+                                    <td style="width: 47.5%"><strong>Base</strong></td>
+                                    <td style="width: 50%"><strong>Level Limit Break</strong><td>
+                                </tr>
+                                <tr ng-if="details.festAbilityGP">
+                                    <td width="5%">Leader Skill</td>
+                                    <td ng-if="!details.festAbilityGP.hasOwnProperty('base')"><div ng-repeat="item in details.festAbilityGP track by $index"><strong>Level {{$index + 1}}: </strong><span ng-bind-html="item.festGPAbility | decorate"></span><br></div></td>
+                                    <td ng-if="details.festAbilityGP.hasOwnProperty('base')"><div ng-repeat="item in details.festAbilityGP.base track by $index"><strong>Level {{$index + 1}}: </strong><span ng-bind-html="item.festGPAbility | decorate"></span><br></div></td>
+                                    <td ng-if="details.festAbilityGP.hasOwnProperty('llbbase')"><div ng-repeat="item in details.festAbilityGP.llbbase track by $index"><strong>Level {{$index + 1}}: </strong><span ng-bind-html="item.festGPAbility | decorate"></span><br></div></td>
+                                </tr>
+                                <tr ng-if="details.festAbilityGPCondition">
+                                    <td width="5%">Burst Condition</td>
+                                    <td ng-if="!details.festAbilityGPCondition.hasOwnProperty('base')"><span ng-bind-html="details.festAbilityGPCondition | decorate"></span></td>
+                                    <td ng-if="details.festAbilityGPCondition.hasOwnProperty('base')"><span ng-bind-html="details.festAbilityGPCondition.base | decorate"></span></td>
+                                    <td ng-if="details.festAbilityGPCondition.hasOwnProperty('llbbase')"><span ng-bind-html="details.festAbilityGPCondition.llbbase | decorate"></span></td>
+                                </tr>
+                                <tr ng-if="details.festAbilityGP">
+                                    <td width="5%">Burst</td>
+                                    <td ng-if="!details.festAbilityGP.hasOwnProperty('base')"><div ng-repeat="item in details.festAbilityGP track by $index"><strong>Level {{$index + 1}}: [{{item.uses}} use{{"" ? item.uses == 1 : "s"}}] </strong><span ng-bind-html="item.festGPSpecial | decorate"></span><br></div></td>
+                                    <td ng-if="details.festAbilityGP.hasOwnProperty('base')"><div ng-repeat="item in details.festAbilityGP.base track by $index"><strong>Level {{$index + 1}}: [{{item.uses}} use{{"" ? item.uses == 1 : "s"}}] </strong><span ng-bind-html="item.festGPSpecial | decorate"></span><br></div></td>
+                                    <td ng-if="details.festAbilityGP.hasOwnProperty('llbbase')"><div ng-repeat="item in details.festAbilityGP.llbbase track by $index"><strong>Level {{$index + 1}}: [{{item.uses}} use{{"" ? item.uses == 1 : "s"}}] </strong><span ng-bind-html="item.festGPSpecial | decorate"></span><br></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
 <!-- Evolutions -->
 

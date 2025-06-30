@@ -951,9 +951,9 @@ tr.preview td:nth-child(2) > a:after {
     white-space: normal;
 }
 
-.abilities td:nth-child(2) {
-    /*width: 100%;*/
-}
+/* .abilities td:nth-child(2) {
+    width: 100%;
+} */
 
 .specialName {
     display: block;
