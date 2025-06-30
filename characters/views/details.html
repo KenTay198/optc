@@ -104,19 +104,21 @@
                                     <td ng-if="compare" colspan="{{::hybrid ? 2 : 1}}" comparison="negative">
                                         {{unit.maxEXP - compare.maxEXP | number}}</td>
                                 </tr>
-                                <tr>
+                                <tr ng-if="getTagsForUnit(unit).length != 0">
                                     <th colspan="5">Tags</th>
                                 </tr>
                                 <tr ng-if="!isGroupedTags(getTagsForUnit(unit))">
-                                    <td ng-repeat="tag in getTagsForUnit(unit)">
-                                        <span class="badge" ng-class="getCategoryClass(tag)">{{ tag }}</span>
+                                    <td colspan="5">
+                                        <span class="badge" style="margin-right: 2px;" ng-repeat="tag in getTagsForUnit(unit)" ng-class="getCategoryClass(tag)">
+                                            {{ tag }}
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr ng-if="isGroupedTags(getTagsForUnit(unit))"
                                     ng-repeat="group in getTagsForUnit(unit) track by $index">
                                     <td colspan="5">
-                                        <strong>Character {{ $index + 1 }} Tags:</strong>
-                                        <span class="badge" ng-repeat="tag in group" ng-class="getCategoryClass(tag)">
+                                        <strong>Character {{ $index + 1 }} Tags: </strong>
+                                        <span class="badge" style="margin-right: 2px;" ng-repeat="tag in group" ng-class="getCategoryClass(tag)">
                                             {{ tag }}
                                         </span>
                                     </td>

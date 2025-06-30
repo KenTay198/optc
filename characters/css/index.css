@@ -1340,7 +1340,7 @@ unit > a {
   color: black;
 } */
 
-.tag-category-1 { background-color: crimson; color: white; }
-.tag-category-2 { background-color: seagreen; color: white; }
-.tag-category-3 { background-color: royalblue; color: white; }
-.tag-category-4 { background-color: goldenrod; color: white; }
+.tag-category-1 { background-color: rgb(211,125,6); color: white; }
+.tag-category-2 { background-color: rgb(87,131,27); color: white; }
+.tag-category-3 { background-color: rgb(194,47,135); color: white; }
+.tag-category-4 { background-color: rgb(4,151,138); color: white; }

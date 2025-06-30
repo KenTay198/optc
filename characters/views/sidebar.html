@@ -61,6 +61,23 @@
         Characters</span>
 </div>
 
+<div class="filter-container expandable" id="tag-filter" ng-class="{ expanded: !filters.tagEnabled }">
+    <span class="filter-header" ng-click="filters.tagEnabled = !filters.tagEnabled">
+        Tags filters
+        <i class="pull-right fa fa-{{filters.tagEnabled ? 'chevron-up' : 'chevron-down'}}"></i>
+    </span>
+
+    <label style="margin: 5px 0 10px 5px; color: white;">
+        <input type="checkbox" style="margin-right: 5px;" ng-model="filters.tagsStrict">
+        Match all selected tags
+    </label>
+
+    <div style="max-height: 350px; overflow-y: auto; padding-right: 5px;">
+        <span ng-repeat="tags in availableTags" class="filter width-12 tags" ng-click="onTagsClick($event,tags)"
+            ng-class="{ active: filters.tags.indexOf(tags) > -1 }">{{::tags.name}}</span>
+    </div>
+</div>
+
 <div class="filter-container expandable" id="rumble-style-filter" ng-class="{ expanded: filters.rumbleStyleEnabled }">
     <span class="filter-header" ng-click="filters.rumbleStyleEnabled = !filters.rumbleStyleEnabled">
         Rumble style filters
@@ -79,24 +96,6 @@
     <span class="filter width-12 exc" ng-model="filters.styleBAL" ng-class="{ active: filters.styleBAL }"
         ng-click="filters.styleBAL = !filters.styleBAL">BAL</span>
 </div>
-
-<div class="filter-container expandable" id="tag-filter" ng-class="{ expanded: !filters.tagEnabled }"
-    style="max-height: 250px; overflow-y: auto; padding-right: 5px;">
-
-    <span class="filter-header" ng-click="filters.tagEnabled = !filters.tagEnabled">
-        Tags filters
-        <i class="pull-right fa fa-{{filters.tagEnabled ? 'chevron-up' : 'chevron-down'}}"></i>
-    </span>
-
-    <label style="display: block; margin: 5px 0 10px 0; color: white;">
-        <input type="checkbox" ng-model="filters.tagsStrict">
-        Match all selected tags
-    </label>
-
-    <span ng-repeat="tags in availableTags" class="filter width-12 tags" ng-click="onTagsClick($event,tags)"
-        ng-class="{ active: filters.tags.indexOf(tags) > -1 }">{{::tags.name}}</span>
-</div>
-
 
 <div class="filter-container expandable" id="rarity-filter" ng-class="{ expanded: filters.rarityEnabled }">
     <span class="filter-header" ng-click="filters.rarityEnabled = !filters.rarityEnabled">
