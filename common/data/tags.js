@@ -4398,7 +4398,7 @@ window.tags = [
 	["Animal Kingdom Pirates", "Tobi Roppo", "Ancient Zoan-type"],
 	["Kuja Pirates", "Paramythia-type"],
 	[],
-	[],
+	["Mokomo Dukedom", "Mink"],
 	[],
 	[],
 	[],
