@@ -5,14 +5,14 @@ window.capspecials = {
         orb: function(p) { return [1.75, 2][CrunchUtils.limitUnlock(p, "captains")]; },
     },
     1941: {
-        status: function(p) { return [[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 1.5]][CrunchUtils.llimitUnlock(p, "captains")][CrunchUtils.limitUnlock(p, "captains")]; },
+        status: function(p) { return [[1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1.5]][CrunchUtils.llimitUnlock(p, "captains")][CrunchUtils.limitUnlock(p, "captains")]; },
         warning: "Selected special (%name%) assumes that the enemy has been inflicted with Burn."
     },
     2035: {
         orb: function(p) { return p.unit.cost <= 40 ? 2 : 1; }
     },
     2109: {
-        atkCeil: function(p) { return [[1, 1, 1, 1, 1, 1, 1],[1, 1, 1, 1, 1, 1, 2.25]][CrunchUtils.llimitUnlock(p, "captains")][CrunchUtils.limitUnlock(p, "captains")]; },
+        atkCeil: function(p) { return [[1, 1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 2.25]][CrunchUtils.llimitUnlock(p, "captains")][CrunchUtils.limitUnlock(p, "captains")]; },
     },
     2112: {
         delay: function(p) { return 1; },
@@ -35,7 +35,7 @@ window.capspecials = {
             p.cached.multiplier = levels[n];
             p.scope.notify({
                 text: 'Using the ' + ["Chain Addition", "Base ATK buffs", "Both Buffs"][n] + '. To switch to ' + ["Chain Addition", "Base ATK buffs", "Both Buffs"][(n + 1) % levels.length] + ', disable and re-enable this special',
-                name: (p.team[p.sourceSlot].unit.number+1).toString() + 'warning'
+                name: (p.team[p.sourceSlot].unit.number + 1).toString() + 'warning'
             });
         },
     },
@@ -48,7 +48,7 @@ window.capspecials = {
             p.cached.multiplier = levels[n];
             p.scope.notify({
                 text: 'Using the ' + ["Chain Addition", "Base ATK buffs", "Both Buffs"][n] + '. To switch to ' + ["Chain Addition", "Base ATK buffs", "Both Buffs"][(n + 1) % levels.length] + ', disable and re-enable this special',
-                name: (p.team[p.sourceSlot].unit.number+1).toString() + 'warning'
+                name: (p.team[p.sourceSlot].unit.number + 1).toString() + 'warning'
             });
         },
     },
@@ -86,7 +86,7 @@ window.capspecials = {
             p.cached.multiplier = levels[n];
             p.scope.notify({
                 text: 'Using the ' + ["Burn", "Increase Damage Taken", "Both Debuffs"][n] + '. To switch to ' + ["Burn", "Increase Damage Taken", "Both Debuffs"][(n + 1) % levels.length] + ', disable and re-enable this special',
-                name: (p.team[p.sourceSlot].unit.number+1).toString() + 'warning'
+                name: (p.team[p.sourceSlot].unit.number + 1).toString() + 'warning'
             });
         },
     },
@@ -100,7 +100,7 @@ window.capspecials = {
             p.cached.multiplier = levels[n];
             p.scope.notify({
                 text: 'Using the ' + ["Burn", "Increase Damage Taken", "Both Debuffs"][n] + '. To switch to ' + ["Burn", "Increase Damage Taken", "Both Debuffs"][(n + 1) % levels.length] + ', disable and re-enable this special',
-                name: (p.team[p.sourceSlot].unit.number+1).toString() + 'warning'
+                name: (p.team[p.sourceSlot].unit.number + 1).toString() + 'warning'
             });
         },
     },
@@ -134,6 +134,20 @@ window.capspecials = {
     4133: {
         atkbasePlus: function(p) { return 250; },
     },
+    5609: {
+        finalTap: function(p) { return [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9][p.cached.multiplier] },
+        finalTapCondition: function(p) { return p.unit.class.has("Striker") },
+        onActivation: function(p) {
+            const levels = [0, 1, 2, 3, 4, 5, 6];
+            const effects = ["20% Final Tap Boost", "30% Final Tap Boost", "40% Final Tap Boost", "50% Final Tap Boost", "60% Final Tap Boost", "70% Final Tap Boost", "90% Final Tap Boost"]
+            const n = (levels.indexOf(p.cached.multiplier) + 1) % levels.length;
+            p.cached.multiplier = levels[n];
+            p.scope.notify({
+                text: 'Using the ' + effects[n] + '. To switch to ' + effects[(n + 1) % levels.length] + ', disable and re-enable this special',
+                name: (p.team[p.sourceSlot].unit.number + 1).toString() + 'warning'
+            });
+        },
+    }
 };
 
 var calcGhostStartIDCapSpecials = { "start": 5000 };
@@ -212,16 +226,16 @@ var ghostsCapSpecials = {
         delay: function(p) { return 1; },
     },
     449: {
-        dmgredatk: function(p) { return Math.min(1.5, 1+(p.dmgreductionCounter/100)); },
+        dmgredatk: function(p) { return Math.min(1.5, 1 + (p.dmgreductionCounter / 100)); },
     },
     450: {
-        dmgredatk: function(p) { return Math.min(1.5, 1+(p.dmgreductionCounter/100)); },
+        dmgredatk: function(p) { return Math.min(1.5, 1 + (p.dmgreductionCounter / 100)); },
     },
     451: {
-        dmgredatk: function(p) { return Math.min(1.5, 1+(p.dmgreductionCounter/100)); },
+        dmgredatk: function(p) { return Math.min(1.5, 1 + (p.dmgreductionCounter / 100)); },
     },
     452: {
-        dmgredatk: function(p) { return Math.min(1.5, 1+(p.dmgreductionCounter/100)); },
+        dmgredatk: function(p) { return Math.min(1.5, 1 + (p.dmgreductionCounter / 100)); },
     },
     473: {
         chainAddition: function(p) { return 1.2; },
@@ -244,55 +258,55 @@ var ghostsCapSpecials = {
     595: {
         turnedOn: false,
         onActivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = true;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = true;
         },
         onDeactivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = false;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = false;
         },
     },
     596: {
         turnedOn: false,
         onActivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = true;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = true;
         },
         onDeactivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = false;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = false;
         },
     },
     597: {
         turnedOn: false,
         onActivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = true;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = true;
         },
         onDeactivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = false;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = false;
         },
     },
     599: {
         turnedOn: false,
         onActivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = true;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = true;
         },
         onDeactivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = false;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = false;
         },
     },
     600: {
         turnedOn: false,
         onActivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = true;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = true;
         },
         onDeactivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = false;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = false;
         },
     },
     601: {
         turnedOn: false,
         onActivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = true;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = true;
         },
         onDeactivation: function(p) {
-            window.capspecials[p.team[p.sourceSlot].unit.number+1].turnedOn = false;
+            window.capspecials[p.team[p.sourceSlot].unit.number + 1].turnedOn = false;
         },
     },
 }

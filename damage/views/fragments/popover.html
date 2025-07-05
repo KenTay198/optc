@@ -166,6 +166,18 @@
                     <div ng-bind-html="details.superSpecialCriteria | decorate"></div>
                 </td>
             </tr>
+            <tr class="header" ng-if="details.VSSpecial">
+                <td colspan="2">VS Special</td>
+                <td colspan="3">VS Special Condition</td>
+            </tr>
+            <tr class="information" ng-if="details.VSSpecial">
+                <td colspan="2">
+                    <div ng-bind-html="details.VSSpecial | decorate"></div>
+                </td>
+                <td colspan="3">
+                    <div ng-bind-html="details.VSCondition | decorate"></div>
+                </td>
+            </tr>
             <tr class="header" ng-if="details.swap.base">
                 <td colspan="2">Swap</td>
                 <td colspan="3">Super Swap: {{details.swap.superTurns}} Swaps</td>
