@@ -14668,8 +14668,8 @@ window.captains = {
     // #region 5500 -> 5999
     5609: {
         atk: function(p) {
-            if(p.classCount["Striker"] === 6) return 6.5;
-            return 5 + p.classCount["Striker"] / 6;
+            if(p.classCount["Striker"] === 6 && window.finalTapValue >= 1.5) return 6.5;
+            return 5 + Math.max(p.classCount["Striker"] - 1, 0) / 5;
         }
 
     },

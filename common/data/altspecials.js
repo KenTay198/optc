@@ -1,4 +1,5 @@
 window.altspecials = {
+    //#region 1500 -> 1999
     1587: {
         turnedOn: [ false, false, false, false, false, false ],
         onActivation: function(p) {
@@ -35,6 +36,8 @@ window.altspecials = {
             window.altspecials[p.team[p.sourceSlot].unit.number+1].turnedOn[p.sourceSlot] = false;
         },
     },
+    //#endregion
+    //#region 2000 -> 2499
     2073: {
         luffyGear: [ 0, 0, 0, 0, 0, 0 ],
         turnedOn: [ false, false, false, false, false, false ],
@@ -82,6 +85,8 @@ window.altspecials = {
             window.altspecials[p.team[p.sourceSlot].unit.number+1].turnedOn[p.sourceSlot] = false;
         },
     },
+    //#endregion
+    //#region 2500 -> 3000
     2803: {
         staticMult: function(p) { return p.slot == p.sourceSlot ? 500 : 0; }
     },
@@ -103,6 +108,8 @@ window.altspecials = {
     2964: {
         atkbase: function(p) { return p.slot == p.sourceSlot ? 1000 : 0; },
     },
+    //#endregion
+    //#region 3000 -> 3499
     3009: {
         orb: function(p) { return p.unit.cost <= 40  ? 2.25 : 1; },
     },
@@ -178,6 +185,8 @@ window.altspecials = {
     3454: {
         negative: function(p) { return 10; },
     },
+    //#endregion
+    //#region 3500 -> 3999
     3519: {
         atkbase: function(p) { return p.slot < 2 ? 1000 : 0; },
     },
@@ -512,6 +521,8 @@ window.altspecials = {
     3364: {
         atkPlus: function(p) { return 0.25; },
     },
+    //#endregion
+    //#region 4000 -> 4499
     4011: {
         tapTiming: function(p) { return p.unit.class.has("Cerebral") || p.unit.class.has("Free Spirit") || p.unit.class.has("Fighter") || p.unit.class.has("Slasher") ? { Good: 0.2, Great: 0.3, Perfect: 0.3 } : { Good: 0, Great: 0, Perfect: 0 }; },
     },
@@ -624,7 +635,15 @@ window.altspecials = {
     },
     4337: {
         affinity : function(p) { return p.unit.class.has("Cerebral") || p.unit.class.has("Slasher") ? 1.5 : 1 }
+    },
+    //#endregion
+    //#region 5500 -> 5999
+    5609: {
+        atkPlus: function () { return 0.25},
+        finalTap: function () { return 0.20 },
+        finalTapCondition: function (p) { return p.unit.class.has("Striker")}
     }
+    //#endregion
 };
 
 var calcGhostStartIDAltSpecials = { "start": 5000 };
