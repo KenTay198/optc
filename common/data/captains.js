@@ -14651,6 +14651,58 @@ window.captains = {
         atk: function(p) { return p.unit.type == "INT" ? 2.5 : 1; },
         hp: function(p) { return p.unit.type == "INT" ? 1.2 : 1; },
     },
+    4290: {
+        getCurrentGear: function(p) {
+            if(p.cached.gear) return p.cached.gear;
+            const enabledSupers = Object.entries(p.scope.data).filter(([key, value]) => (key.includes("superClass") || key.includes("superType")) && value === true);
+            const { types, classes } = enabledSupers.reduce((acc, [key]) => {
+                if (key.toLowerCase().includes("type")) {
+                    acc.types += 1;
+                    return acc;
+                } else if (key.toLowerCase().includes("class")) {
+                    acc.classes += 1;
+                    return acc;
+                }
+                return acc;
+            }, {types : 0, classes : 0});
+            let gear = 0
+            if((types + classes) >= 4) gear = 5;
+            if(types >= 1 && classes >= 1) gear = 3;
+            p.cached.gear = gear;
+            return gear;
+        },
+        atkPlus: function(p) {
+            const gear = window.captains[4290].getCurrentGear(p);
+            if(gear === 5) return 0.25;
+            return 0;
+        },
+        chainAdditionPlus: function(p) {
+            const gear = window.captains[4290].getCurrentGear(p);
+            if(gear === 5) return 0.25;
+            return 0;
+        },
+        chainMultiplicationPlus: function(p) {
+            const gear = window.captains[4290].getCurrentGear(p);
+            if(gear === 5) return 0.25;
+            return 0;
+        },
+        atk: function(p) {
+            const gear = window.captains[4290].getCurrentGear(p);
+            // Gear 3 captain : 1.05x boost for each super type limited to 3 (*6.077)
+            if(gear === 3) {
+                let coef = 1.05;
+                // Gear 5 captain : 1.1x boost for each super type limited to 3 (*6.987)
+                if(gear === 5) coef = 1.1;
+                return 5.25 * coef**(Math.min(types + classes, 3));
+            };
+
+            return 5.25;
+        },
+        hp: function() { return 1.2 }
+    },
+    onActivation: function(p) {
+
+    },
     4337 : {
         hitAtk: function(p) {
             if(!p.unit.class.has("Slasher") && !p.unit.class.has("Cerebral")) return 1;
