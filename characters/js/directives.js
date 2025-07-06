@@ -1226,7 +1226,7 @@
 						: "this character "
 				}${
 					condition.stat == "takes damage" ||
-					condition.stat.includes("recieves") ||
+					condition.stat.includes("receives") ||
 					condition.stat.includes("defeated")
 						? condition.stat
 						: "lands a " + condition.stat
