@@ -99,7 +99,7 @@
 
   app.controller(
     "SidebarCtrl",
-    function ($scope, $rootScope, $stateParams, $timeout) {
+    function ($scope, $rootScope, $stateParams, $timeout, $storage) {
       $scope.availableClasses = window.availableClasses;
       $scope.availableTags = window.availableTags;
 
