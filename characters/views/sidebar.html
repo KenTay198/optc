@@ -61,7 +61,7 @@
         Characters</span>
 </div>
 
-<div class="filter-container expandable" id="tag-filter" ng-class="{ expanded: !filters.tagEnabled }">
+<div class="filter-container expandable" id="tag-filter" ng-class="{ expanded: filters.tagEnabled }">
     <span class="filter-header" ng-click="filters.tagEnabled = !filters.tagEnabled">
         Tags filters
         <i class="pull-right fa fa-{{filters.tagEnabled ? 'chevron-up' : 'chevron-down'}}"></i>
