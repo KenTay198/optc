@@ -2257,7 +2257,7 @@ window.units = [
     [ "Dracule Mihawk - Master Swordsman", "DEX", "Slasher", 5, 20, 4, 4, 99, 2000000, 1089, 637, 65, 2341, 1388, 147, 1 ],
     [ "Portgas D. Ace - Spade Pirates", "QCK", [ "Free Spirit", "Driven" ], 5, 20, 4, 4, 99, 2000000, 1160, 545, 95, 2418, 1225, 189, 1 ],
     [ "Higuma - Wanted Man", "STR", [ "Slasher", "Driven" ], 5, 20, 5, 5, 99, 2000000, 294, 339, 14, 883, 699, 70, 1 ],
-    [ "Higuma - Leader of the Mountain Bandits", "STR", [ "Slasher", "Driven" ], '5+', 30, 4, 5, 99, 2000000, 766, 628, 51, 1908, 1049, 133, 1 ],
+    [ "Higuma - Leader of the Mountain Bandits", "STR", [ "Slasher", "Driven" ], "5+", 30, 4, 5, 99, 2000000, 766, 628, 51, 1908, 1049, 133, 1 ],
     [ "Shanks - Toast to the New Era", "DEX", [ "Free Spirit", "Cerebral" ], 4, 30, 5, 1, 50, 130703, 723, 301, 62, 1252, 791, 122, 1 ],
     [ "Red-Haired Shanks - Toast to the New Era", "DEX", [ "Free Spirit", "Cerebral" ], 5, 60, 5, 1, 99, 5000000, 1203, 782, 110, 2578, 1452, 280, 1 ],
     [ "Donquixote Doflamingo - Country's Future Hanging by a Thread ", "INT", [ "Driven", "Cerebral" ], 4, 30, 6, 2, 70, 1066998, 239, 193, 39, 1167, 794, 191, 1 ],
@@ -2361,7 +2361,7 @@ window.units = [
     [ "Cat Viper - King of the Holy Night", "STR", [ "Striker", "Fighter" ], 5, 20, 4, 4, 99, 2000000, 1341, 740, 66, 2599, 1389, 110, 1 ],
     [ "Nami - Captivating Lady Santa", "PSY", [ "Cerebral", "Striker" ], 4, 30, 5, 1, 50, 130703, 782, 371, 122, 1451, 750, 200, 1 ],
     [ "Nami - Captivating Santa Girl", "PSY", [ "Cerebral", "Striker" ], 5, 60, 4, 1, 99, 5000000, 1410, 733, 191, 2273, 1317, 351, 1 ],
-    [ "Monkey D. Luffy - Gear Four: Snakeman", "STR", [ "Fighter", "Powerhouse" ], '6+', 65, 4, 5, 99, 5000000, 1812, 820, 130, 3820, 1645, 282, 1 ],
+    [ "Monkey D. Luffy - Gear Four: Snakeman", "STR", [ "Fighter", "Powerhouse" ], "6+", 65, 4, 5, 99, 5000000, 1812, 820, 130, 3820, 1645, 282, 1 ],
     [ "Charlotte Katakuri - Serious Battle", "PSY", [ "Fighter", "Powerhouse" ], 5, 30, 4, 3, 70, 1066998, 631, 320, 50, 1780, 1030, 110, 1 ],
     [ "Charlotte Katakuri - A Man's Battle", "PSY", [ "Fighter", "Powerhouse" ], 6, 55, 4, 5, 99, 5000000, 1732, 1015, 103, 3850, 1645, 220, 1 ],
     [ "Charlotte Flampe", "PSY", [ "Shooter", "Driven" ], 4, 15, 5, 3, 50, 392109, 320, 130, 30, 980, 740, 140, 1 ],
@@ -2370,8 +2370,8 @@ window.units = [
     [ "Charlotte Montd'Or - Minister of Cheese & 19th Son of the Charlotte Family", "STR", [ "Shooter", "Driven" ], 5, 30, 4, 4, 99, 4000000, 1013, 902, 62, 2740, 1390, 280, 1 ],
     [ "Gourmet Knight Streusen", "STR", [ "Slasher", "Driven" ], 4, 15, 5, 3, 50, 392109, 230, 230, 34, 876, 810, 134, 1 ],
     [ "Gourmet Knight Streusen - Big Mom Pirates, Head Chef", "STR", [ "Slasher", "Driven" ], 5, 30, 4, 4, 99, 4000000, 866, 801, 122, 2532, 1260, 358, 1 ],
-    [ "Dogstorm - Feast of Reconciliation", "STR", [ "Cerebral", "Slasher" ], '6+', 65, 4, 5, 99, 5000000, 1356, 772, 172, 3345, 1582, 421, 1 ],
-    [ "Cat Viper - Feast of Reconciliation", "PSY", [ "Striker", "Powerhouse" ], '6+', 65, 6, 5, 99, 5000000, 1588, 624, 138, 3592, 1524, 392, 1 ],
+    [ "Dogstorm - Feast of Reconciliation", "STR", [ "Cerebral", "Slasher" ], "6+", 65, 4, 5, 99, 5000000, 1356, 772, 172, 3345, 1582, 421, 1 ],
+    [ "Cat Viper - Feast of Reconciliation", "PSY", [ "Striker", "Powerhouse" ], "6+", 65, 6, 5, 99, 5000000, 1588, 624, 138, 3592, 1524, 392, 1 ],
     [ "Charlotte Smoothie - 14th Daughter of the Charlotte Family", "INT", [ "Slasher", "Powerhouse" ], 4, 25, 5, 3, 70, 1066998, 799, 133, 109, 1491, 731, 190, 1 ],
     [ "General Smoothie - 14th Daughter of the Charlotte Family", "INT", [ "Slasher", "Powerhouse" ], 5, 40, 5, 4, 99, 4000000, 1409, 691, 178, 2578, 1341, 320, 1 ],
     [ "Mother Carmel", "DEX", [ "Shooter", "Driven" ], 3, 1, 4, 3, 50, 130703, 442, 180, 60, 1092, 499, 130, 1 ],
@@ -4403,6 +4403,10 @@ window.units = [
     [ "Marshall D. Teach - Incoming News", "STR", ["Powerhouse", "Striker"], 5, 30, 5, 4, 99, 4000000, 1921, 799, 76, 3842, 1598, 152, 1 ],
     [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
     [ "Marco - Incoming News", "STR", ["Powerhouse", "Striker"], 5, 30, 4, 4, 99, 4000000, 1722, 752, 125, 3444, 1503, 250, 1 ],
+    [ "Mr. 0 & Miss All Sunday - Shadows Lurking in the Desert", ["STR", "DEX"], [["Cerebral", "Striker"], ["Cerebral", "Striker"], ["Cerebral", "Striker"]], 6, 55, 4, 5, 99, 5000000, 2259, 924, 141, 4518, 1848, 281, 1 ],
+    [ "Donquixote Doflamingo - Grinning for the New Warlord", "STR", ["Driven", "Cerebral"], 5, 30, 4, 4, 99, 4000000, 1855, 829, 65, 3710, 1658, 129, 1 ],
+    [ "Alvida & Coby", "DEX", ["Striker", "Driven"], 5, 1, 4, 4, 99, 4000000, 1824, 744, 98, 3648, 1488, 196, 1 ],
+    [ "Mihawk & Perona - Luck-Formed Mysterious Relationship", ["STR", "PSY"], [["Cerebral", "Slasher"], ["Cerebral", "Driven"], ["Cerebral", "Driven"]], "6+", 65, 5, 5, 99, 5000000, 1872, 1132, 230, 3744, 1698, 460, 1 ],
     [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
     [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
     [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
@@ -4494,11 +4498,7 @@ window.units = [
     [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
     [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
     [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
-    [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
-    [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
-    [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
-    [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
-    [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ],
+    [ "", "Type", ["Class1", "Class2"], null, null, null, null, null, null, null, null, null, null, null, null, null ]
 ];
 
 var calcGhostStartID = { "start": 5000 };
@@ -5208,6 +5208,14 @@ var ghostsUnits = [
     [ "⚐ Koala - Aces Leading the Revolution", "INT", ["Free Spirit", "Cerebral"], "6+", 65, 6, 5, 99, 5000000, 1716, 1038, 230, 3432, 1557, 459, 1 ],
     [ "⚐ Sabo & Koala - Aces Leading the Revolution", "STR", ["Free Spirit", "Cerebral"], "6+", 65, 4, 5, 99, 5000000, 1718, 1135, 255, 3436, 1702, 510, 1 ],
     [ "⚐ Sabo & Koala - Aces Leading the Revolution", "INT", ["Free Spirit", "Cerebral"], "6+", 65, 4, 5, 99, 5000000, 1718, 1135, 255, 3436, 1702, 510, 1 ],
+    [ "⚐ Mr. 0 - Shadows Lurking in the Desert", "STR", ["Cerebral", "Striker"], 6, 55, 4, 5, 99, 5000000, 2111, 893, 126, 4222, 1786, 251, 1 ],
+    [ "⚐ Miss All Sunday - Shadows Lurking in the Desert", "DEX", ["Cerebral", "Striker"], 6, 55, 5, 5, 99, 5000000, 2099, 884, 131, 4198, 1768, 261, 1 ],
+    [ "⚐ Mr. 0 & Miss All Sunday - Shadows Lurking in the Desert", "STR", ["Cerebral", "Striker"], 6, 55, 4, 5, 99, 5000000, 2259, 924, 141, 4518, 1848, 281, 1 ],
+    [ "⚐ Mr. 0 & Miss All Sunday - Shadows Lurking in the Desert", "DEX", ["Cerebral", "Striker"], 6, 55, 4, 5, 99, 5000000, 2259, 924, 141, 4518, 1848, 281, 1 ],
+    [ "⚐ Hawk Eyes Mihawk - Luck-Formed Mysterious Relationship", "STR", ["Cerebral", "Slasher"], "6+", 65, 4, 5, 99, 5000000, 1857, 1092, 193, 3713, 1638, 385, 1 ],
+    [ "⚐ Perona - Luck-Formed Mysterious Relationship", "PSY", ["Cerebral", "Driven"], "6+", 65, 4, 5, 99, 5000000, 1819, 986, 226, 3638, 1479, 451, 1 ],
+    [ "⚐ Mihawk & Perona - Luck-Formed Mysterious Relationship", "STR", ["Cerebral", "Driven"], "6+", 65, 5, 5, 99, 5000000, 1872, 1132, 230, 3744, 1698, 460, 1 ],
+    [ "⚐ Mihawk & Perona - Luck-Formed Mysterious Relationship", "PSY", ["Cerebral", "Driven"], "6+", 65, 5, 5, 99, 5000000, 1872, 1132, 230, 3744, 1698, 460, 1 ],
 ];
 
 window.units = window.units.concat(ghostsUnits);
