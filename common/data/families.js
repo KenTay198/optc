@@ -724,6 +724,7 @@ const BuckinghamStussy = [ "Miss Buckingham Stussy" ];
 const MonkeyDDragon = [ "Monkey D. Dragon" ];
 const Ginny = [ "Ginny" ];
 const FigarlandGarling = [ "Saint Figarland Garling" ];
+const Alpha = [ "Alpha" ];
 
 window.families = {
     1: [ ...MonkeyDLuffy ],
@@ -5025,7 +5026,14 @@ window.families = {
     4411: [ ...EmporioIvankov ],
     4412: [ ...BartholomewKuma, ...Ginny ],
     4413: [ ...CharlotteLinlin ],
-    //4414: [ ...CharlotteLinlin ],
+    4414: [ ...CharlotteLinlin ],
+    4415: [ ...Alpha ],
+    4416: [ ...Sentomaru ],
+    4417: [ ...Sentomaru ],
+    4418: [ ...BoaHancock ],
+    4419: [ ...Sabo ],
+    4420: [ ...Koala ],
+    4421: [ ...Hack ],
     //break
     4986: [ ...MonkeyDLuffy ],
     4987: [ ...MonkeyDLuffy ],

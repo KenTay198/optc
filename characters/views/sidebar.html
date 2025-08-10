@@ -262,7 +262,7 @@
         <i class="pull-right fa fa-{{filters.tmkcEnabled ? 'chevron-up' : 'chevron-down'}}"></i>
     </span>
     <span class="filter width-12 exc" ng-model="filters.globalTM" ng-class="{ active: filters.globalTM }"
-        ng-click="filters.globalTM = !filters.globalTM">Treasure Map Boosters [Boa Hancock]</span>
+        ng-click="filters.globalTM = !filters.globalTM">Treasure Map Boosters [Big Mom]</span>
     <!--span class="filter width-6 exc" ng-model="filters.japanTM" ng-class="{ active: filters.japanTM }"
         ng-click="filters.japanTM = !filters.japanTM">Show Japan TM Boosters [Hyogoro the Flower]</span-->
     <span class="filter width-12 exc" ng-model="filters.globalKC" ng-class="{ active: filters.globalKC }"
@@ -381,6 +381,18 @@
 <div class="filter-container" id="support-container">
     <animate-collapse class="filter-header">Support ability filters</animate-collapse>
     <add-custom-filters target="support" filter-data="filterData" filters="filters"
+        class="collapse"></add-custom-filters>
+</div>
+
+<div class="filter-container" id="rumble-ability-container">
+    <animate-collapse class="filter-header">Rumble Ability Filters</animate-collapse>
+    <add-custom-filters target="rumbleAbility" filter-data="filterData" filters="filters"
+        class="collapse"></add-custom-filters>
+</div>
+
+<div class="filter-container" id="rumble-resistance-container">
+    <animate-collapse class="filter-header">Rumble Resistance Filters</animate-collapse>
+    <add-custom-filters target="rumbleResistance" filter-data="filterData" filters="filters"
         class="collapse"></add-custom-filters>
 </div>
 

@@ -3592,6 +3592,16 @@ window.drops = {
             'Grand Feast Sugo': [ 4373 ]
         },
 
+        {
+            name: 'Sentomaru',
+            dropID: 'coop6',
+            thumb: 4416,
+            global: true,
+            nakama: null,
+            gamewith: null,
+            'Grand Feast Sugo': [ 4416 ]
+        },
+
     ],
 
 
@@ -7462,6 +7472,16 @@ window.drops = {
             nakama: null,
             gamewith: null,
             'Calm Sea': [ "4399-skull" ],
+        },
+
+        {
+            name: 'Big Mom',
+            dropID: 'treasuremap95',
+            thumb: 4414,
+            global: true,
+            nakama: null,
+            gamewith: null,
+            'Calm Sea': [ "4414-skull" ],
         },
 
 
