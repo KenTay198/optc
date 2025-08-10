@@ -264,25 +264,30 @@
           );
       };
 
-    $scope.exportCharacterLog = function () {
+      $scope.initializeFilters = function () {
+        let additionnalFilters = $storage.get("storedFilters") || {};
+        $rootScope.filters = jQuery.extend({}, $rootScope.filters, additionnalFilters);
+      }
+
+      $scope.exportCharacterLog = function () {
         const log = $storage.get("characterLog", []);
-            const confirm = window.confirm("Do you really want to export your characterLog?");
-            if (!confirm) return;
+        const confirm = window.confirm("Do you really want to export your characterLog?");
+        if (!confirm) return;
 
-            const base64 = btoa(JSON.stringify(log));
+        const base64 = btoa(JSON.stringify(log));
 
-            const blob = new Blob([base64], { type: "text/plain;charset=utf-8" });
-            const url = URL.createObjectURL(blob);
+        const blob = new Blob([base64], { type: "text/plain;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
 
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "characterLog.txt";
-            a.click();
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "characterLog.txt";
+        a.click();
 
-            URL.revokeObjectURL(url);
-    }
+        URL.revokeObjectURL(url);
+      }
 
-    $scope.importCharacterLog = function () {
+      $scope.importCharacterLog = function () {
         const input = document.getElementById('importFileInput');
 
         input.onchange = function (event) {
@@ -335,7 +340,7 @@
         };
 
         input.click();
-    };
+      };
 
     $scope.filterData = window.matchers;
       $scope.onDropFilterClick = function (e, value) {
@@ -353,6 +358,8 @@
       $scope.repeat = function (n) {
         return n < 1 ? [] : new Array(n);
       };
+
+      $scope.initializeFilters();
     }
   );
 
