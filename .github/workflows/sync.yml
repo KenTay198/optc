@@ -1,9 +1,10 @@
 name: Sync with upstream
 
 on:
-  schedule:
-    - cron: "29 9 * * *"
-  workflow_dispatch:
+    push:
+      branches:
+        - default
+    workflow_dispatch:
 
 permissions:
   contents: write
@@ -39,12 +40,27 @@ jobs:
           UPSTREAM_DEFAULT=$(git remote show upstream | sed -n '/HEAD branch/s/.*: //p')
           echo "default=$UPSTREAM_DEFAULT" >> $GITHUB_OUTPUT
 
+      - name: Check if already up to date
+        id: check_update
+        shell: bash
+        run: |
+          git fetch upstream ${{ steps.detect.outputs.default }}
+          LOCAL=$(git rev-parse HEAD)
+          REMOTE=$(git rev-parse upstream/${{ steps.detect.outputs.default }})
+          if [ "$LOCAL" = "$REMOTE" ]; then
+            echo "up_to_date=true" >> $GITHUB_ENV
+          else
+            echo "up_to_date=false" >> $GITHUB_ENV
+          fi
+
       - name: Mirror upstream default branch into master
+        if: env.up_to_date != 'true'
         run: |
           git checkout -B master "upstream/${{ steps.detect.outputs.default }}"
           git push origin master --force
 
       - name: Try merge master into default
+        if: env.up_to_date != 'true'
         shell: bash
         run: |
           git checkout default
@@ -67,7 +83,7 @@ jobs:
           fi
 
       - name: Create PR from master -> default (conflicts or protected branch)
-        if: env.merge_ok != 'true'
+        if: env.merge_ok != 'true' && env.up_to_date != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
