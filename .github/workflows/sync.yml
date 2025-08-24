@@ -1,9 +1,8 @@
 name: Sync with upstream
 
 on:
-    push:
-      branches:
-        - default
+    schedule:
+      - cron: '0 10 * * *'
     workflow_dispatch:
 
 permissions:
