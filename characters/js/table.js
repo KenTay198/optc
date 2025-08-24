@@ -85,6 +85,19 @@
     /*******************
      * Table filtering *
      *******************/
+    var storeFilters = function(allFilters) {
+      const storedFiltersKeys = ["noMissing", "noLog"];
+      let storedFilters = {};
+      if(!!$storage.get("storedFilters")) storedFilters =$storage.get("storedFilters");
+      let changed = false;
+      for(const key of storedFiltersKeys) {
+        if(storedFilters[key] !== allFilters[key]) {
+          storedFilters[key] = allFilters[key];
+          if(!changed) changed = true;
+        }
+      }
+      if(changed) $storage.set("storedFilters", storedFilters);
+    }
 
     var tableFilter = function (settings, data, index) {
       if (!tableData.parameters) return true;
@@ -110,6 +123,7 @@
       /* * * * * Sidebar filters * * * * */
       if (!tableData.parameters.filters) return true;
       var filters = tableData.parameters.filters;
+      storeFilters(filters);
       // filter by type
       //if (filters.type && unit.type !== filters.type) return false;
       if (filters.types && filters.types.length) {
