@@ -1,0 +1,80 @@
+name: Sync with upstream
+
+on:
+  schedule:
+    - cron: "30 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git identity
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream and fetch
+        run: |
+          git remote add upstream https://github.com/2Shankz/optc-db.github.io.git
+          git fetch upstream
+
+      - name: Detect upstream default branch
+        id: detect
+        shell: bash
+        run: |
+          UPSTREAM_DEFAULT=$(git remote show upstream | sed -n '/HEAD branch/s/.*: //p')
+          echo "default=$UPSTREAM_DEFAULT" >> $GITHUB_OUTPUT
+
+      - name: Mirror upstream default branch into master
+        run: |
+          git checkout -B master "upstream/${{ steps.detect.outputs.default }}"
+          git push origin master --force
+
+      - name: Try merge master into default
+        shell: bash
+        run: |
+          git checkout default
+
+          if git merge --no-commit master; then
+            echo "merge_ok=true" >> $GITHUB_ENV
+          else
+            echo "merge_ok=false" >> $GITHUB_ENV
+          fi
+
+      - name: Commit & push if merge produced changes
+        if: env.merge_ok == 'true'
+        shell: bash
+        run: |
+          if git diff --staged --quiet; then
+            echo "Nothing to commit (already up to date)."
+          else
+            git commit -m "Merge upstream into default [auto-sync]"
+            git push origin default
+          fi
+
+      - name: Create PR from master -> default (conflicts or protected branch)
+        if: env.merge_ok != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git merge --abort || true
+
+          gh pr create \
+            --base default \
+            --head master \
+            --title "Sync upstream → default (manual resolution required)" \
+            --body  "Des conflits existent ou la branche est protégée. Merci de les résoudre."
