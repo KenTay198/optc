@@ -4018,15 +4018,15 @@ window.rumble = {
                 cooldown: 21,
                 descriptions: [
                     ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
-                    [],
-                    [],
-                    [],
-                    [],
-                    [],
-                    [],
-                    [],
-                    [],
-                    []
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.']
                 ]
             }
         }
@@ -4053,15 +4053,15 @@ window.rumble = {
                 cooldown: 21,
                 descriptions: [
                     ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
-                    [],
-                    [],
-                    [],
-                    [],
-                    [],
-                    [],
-                    [],
-                    [],
-                    []
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.'],
+                    ['Reduces 15% of Special CT to Shooter and Fighter crew members.']
                 ]
             }
         }
