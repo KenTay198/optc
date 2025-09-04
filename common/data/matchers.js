@@ -4911,12 +4911,17 @@
 				// match "Reduces damage received by 70%-100% for 1 turn"
 				// match "reduces any damage received above 2,000 HP by 100% for 1 turn" (3282)
 				regex:
-					/Reduces (?:any )?damage (?:received|taken) (?:above [?\d,]+ HP )?(?:from ([^."]+?)(?:characters?|enemies) )?by (?:100%|[?.\d]+%-100%) for ([?\d]+\+?)(?:-([?\d]+))? turns?/i,
+					/Reduces (?:any )?damage (?:received|taken) (?:above [?\d,]+ HP )?(?:from ([^."]+?)(?:characters?|enemies) )?by (?:100%|[?.\d]+%-100%) for (?:([?\d]+\+?)(?:-([?\d]+))? turns?|([?\d]+\+?)(?:-([?\d]+))? attacks?)/i,
 				submatchers: [
 					{
 						type: "number",
 						description: "Turns:",
-						groups: [2, 3, 4, 5],
+						groups: [2, 3],
+					},
+					{
+						type: "number",
+						description: "Attacks:",
+						groups: [4, 5],
 					},
 					{
 						type: "option",
@@ -7993,262 +7998,11 @@
 		],
 
 		"Buffs": [
-
 			{
 				name: "Accuracy",
-				targets: ["rumbleAbility"],
+				targets: ["rumbleAbility", "gpAbility"],
 				regex:
 					/Applies Lv. ([\d]+)[^.]+Accuracy[^.]+up buff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "ATK",
-				targets: ["rumbleAbility"],
-				regex:
-					/Applies Lv. ([\d]+)[^.]+ATK[^.]+up buff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "Blow Away",
-				targets: ["rumbleAbility"],
-				regex:
-					/Applies Lv. ([\d]+)[^.]+Blow Away[^.]+up buff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "Critical Hit",
-				targets: ["rumbleAbility"],
-				regex:
-					/Applies Lv. ([\d]+)[^.]+Critical Hit[^.]+up buff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "DEF",
-				targets: ["rumbleAbility"],
-				regex:
-					/Applies Lv. ([\d]+)[^.]+DEF[^.]+up buff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "Guard",
-				targets: ["rumbleAbility"],
-				regex:
-					/Applies Lv. ([\d]+)[^.]+Guard[^.]+up buff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "HP",
-				targets: ["rumbleAbility"],
-				regex:
-					/Applies Lv. ([\d]+)[^.]+HP[^.]+up buff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "RCV",
-				targets: ["rumbleAbility"],
-				regex:
-					/Applies Lv. ([\d]+)[^.]+RCV[^.]+up buff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "Shield",
-				targets: ["rumbleAbility"],
-				regex:
-					/Applies Lv. ([\d]+)[^.]+Shield[^.]+up buff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "SPD",
-				targets: ["rumbleAbility"],
-				regex:
-					/Applies Lv. ([\d]+)[^.]+SPD[^.]+up buff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "Special CT",
-				targets: ["rumbleAbility"],
-				regex:
-					/Applies Lv. ([\d]+)[^.]+Special CT[^.]+up buff to ([^.]+)/i,
 				submatchers: [
 					{
 						type: "number",
@@ -8320,6 +8074,76 @@
 			},
 
 			{
+				name: "Accuracy",
+				targets: ["gpSpecial"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+Accuracy[^.]+up buff to (\d)?(?=((?:[^c]+|c(?!rew))*))\3crew members?(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "ATK",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+ATK[^.]+up buff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
+				],
+			},
+
+			{
 				name: "ATK",
 				targets: ["rumbleSpecial"],
 				regex:
@@ -8366,6 +8190,76 @@
 						description: "Range:",
 					},
 					...createRangeSubmatcher([6]),
+				],
+			},
+		
+			{
+				name: "ATK",
+				targets: ["gpSpecial"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+ATK[^.]+up buff to (\d)?(?=((?:[^c]+|c(?!rew))*))\3crew members?(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "Blow Away",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+Blow Away[^.]+up buff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
 				],
 			},
 
@@ -8420,6 +8314,76 @@
 			},
 
 			{
+				name: "Blow Away",
+				targets: ["gpSpecial"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+Blow Away[^.]+up buff to (\d)?(?=((?:[^c]+|c(?!rew))*))\3crew members?(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "Critical Hit",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+Critical Hit[^.]+up buff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
+				],
+			},
+
+			{
 				name: "Critical Hit",
 				targets: ["rumbleSpecial"],
 				regex:
@@ -8466,6 +8430,76 @@
 						description: "Range:",
 					},
 					...createRangeSubmatcher([6]),
+				],
+			},
+
+			{
+				name: "Critical Hit",
+				targets: ["gpSpecial"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+Critical Hit[^.]+up buff to (\d)?(?=((?:[^c]+|c(?!rew))*))\3crew members?(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "DEF",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+DEF[^.]+up buff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
 				],
 			},
 
@@ -8520,6 +8554,76 @@
 			},
 
 			{
+				name: "DEF",
+				targets: ["gpSpecial"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+DEF[^.]+up buff to (\d)?(?=((?:[^c]+|c(?!rew))*))\3crew members?(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "Guard",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+Guard[^.]+up buff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
+				],
+			},
+
+			{
 				name: "Guard",
 				targets: ["rumbleSpecial"],
 				regex:
@@ -8566,6 +8670,101 @@
 						description: "Range:",
 					},
 					...createRangeSubmatcher([6]),
+				],
+			},
+
+			{
+				name: "Guard",
+				targets: ["gpSpecial"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+Guard[^.]+up buff to (\d)?(?=((?:[^c]+|c(?!rew))*))\3crew members?(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "HP",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+HP[^.]+up buff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
+				],
+			},
+
+			{
+				name: "RCV",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+RCV[^.]+up buff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
 				],
 			},
 
@@ -8620,6 +8819,76 @@
 			},
 
 			{
+				name: "RCV",
+				targets: ["gpSpecial"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+RCV[^.]+up buff to (\d)?(?=((?:[^c]+|c(?!rew))*))\3crew members?(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "Shield",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+Shield[^.]+up buff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
+				],
+			},
+
+			{
 				name: "Shield",
 				targets: ["rumbleSpecial"],
 				regex:
@@ -8666,6 +8935,76 @@
 						description: "Range:",
 					},
 					...createRangeSubmatcher([6]),
+				],
+			},
+
+			{
+				name: "Shield",
+				targets: ["gpSpecial"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+Shield[^.]+up buff to (\d)?(?=((?:[^c]+|c(?!rew))*))\3crew members?(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "SPD",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+SPD[^.]+up buff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
 				],
 			},
 
@@ -8720,6 +9059,76 @@
 			},
 
 			{
+				name: "SPD",
+				targets: ["gpSpecial"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+SPD[^.]+up buff to (\d)?(?=((?:[^c]+|c(?!rew))*))\3crew members?(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "Special CT",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+Special CT[^.]+up buff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
+				],
+			},
+
+			{
 				name: "Special CT",
 				targets: ["rumbleSpecial"],
 				regex:
@@ -8769,189 +9178,58 @@
 				],
 			},
 
+			{
+				name: "Special CT",
+				targets: ["gpSpecial"],
+				regex:
+					/Applies Lv. ([\d]+)[^.]+Special CT[^.]+up buff to (\d)?(?=((?:[^c]+|c(?!rew))*))\3crew members?(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
 		],
 
 		"Debuffs": [
 			{
 				name: "Accuracy",
-				targets: ["rumbleAbility"],
+				targets: ["rumbleAbility", "gpAbility"],
 				regex:
 					/Inflicts Lv. ([\d]+)[^.]+Accuracy[^.]+down debuff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "ATK",
-				targets: ["rumbleAbility"],
-				regex:
-					/Inflicts Lv. ([\d]+)[^.]+ATK[^.]+down debuff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "Critical Hit",
-				targets: ["rumbleAbility"],
-				regex:
-					/Inflicts Lv. ([\d]+)[^.]+Critical Hit[^.]+down debuff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "DEF",
-				targets: ["rumbleAbility"],
-				regex:
-					/Inflicts Lv. ([\d]+)[^.]+DEF[^.]+down debuff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "Guard",
-				targets: ["rumbleAbility"],
-				regex:
-					/Inflicts Lv. ([\d]+)[^.]+Guard[^.]+down debuff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "HP",
-				targets: ["rumbleAbility"],
-				regex:
-					/Inflicts Lv. ([\d]+)[^.]+HP[^.]+down debuff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "SPD",
-				targets: ["rumbleAbility"],
-				regex:
-					/Inflicts Lv. ([\d]+)[^.]+SPD[^.]+down debuff to ([^.]+)/i,
-				submatchers: [
-					{
-						type: "number",
-						description: "Level:",
-						groups: [1],
-					},
-					...createUniversalSubmatcher([2]),
-					{
-						type: "separator",
-						description: "Types:",
-					},
-					...createTypesSubmatchers([2]),
-					{
-						type: "separator",
-						description: "Classes:",
-					},
-					...createClassesSubmatchers([2]),
-				],
-			},
-
-			{
-				name: "Special CT",
-				targets: ["rumbleAbility"],
-				regex:
-					/Inflicts Lv. ([\d]+)[^.]+Special CT[^.]+down debuff to ([^.]+)/i,
 				submatchers: [
 					{
 						type: "number",
@@ -9028,6 +9306,76 @@
 			},
 
 			{
+				name: "Accuracy",
+				targets: ["gpSpecial"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+Accuracy[^.]+down debuff to (\d)?(?=((?:[^e]+|e(?!nem))*))\3enem(?:y|ies)(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "ATK",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+ATK[^.]+down debuff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
+				],
+			},
+
+			{
 				name: "ATK",
 				targets: ["rumbleSpecial"],
 				regex:
@@ -9079,6 +9427,76 @@
 						description: "Range:",
 					},
 					...createRangeSubmatcher([5]),
+				],
+			},
+
+			{
+				name: "ATK",
+				targets: ["gpSpecial"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+ATK[^.]+down debuff to (\d)?(?=((?:[^e]+|e(?!nem))*))\3enem(?:y|ies)(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "Critical Hit",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+Critical Hit[^.]+down debuff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
 				],
 			},
 
@@ -9138,6 +9556,76 @@
 			},
 
 			{
+				name: "Critical Hit",
+				targets: ["gpSpecial"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+Critical Hit[^.]+down debuff to (\d)?(?=((?:[^e]+|e(?!nem))*))\3enem(?:y|ies)(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "DEF",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+DEF[^.]+down debuff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
+				],
+			},
+
+			{
 				name: "DEF",
 				targets: ["rumbleSpecial"],
 				regex:
@@ -9189,6 +9677,76 @@
 						description: "Range:",
 					},
 					...createRangeSubmatcher([5]),
+				],
+			},
+
+			{
+				name: "DEF",
+				targets: ["gpSpecial"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+DEF[^.]+down debuff to (\d)?(?=((?:[^e]+|e(?!nem))*))\3enem(?:y|ies)(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "Guard",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+Guard[^.]+down debuff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
 				],
 			},
 
@@ -9248,6 +9806,76 @@
 			},
 
 			{
+				name: "Guard",
+				targets: ["gpSpecial"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+Guard[^.]+down debuff to (\d)?(?=((?:[^e]+|e(?!nem))*))\3enem(?:y|ies)(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "HP",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+HP[^.]+down debuff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
+				],
+			},
+
+			{
 				name: "RCV",
 				targets: ["rumbleSpecial"],
 				regex:
@@ -9299,6 +9927,76 @@
 						description: "Range:",
 					},
 					...createRangeSubmatcher([5]),
+				],
+			},
+
+			{
+				name: "RCV",
+				targets: ["gpSpecial"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+RCV[^.]+down debuff to (\d)?(?=((?:[^e]+|e(?!nem))*))\3enem(?:y|ies)(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "SPD",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+SPD[^.]+down debuff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
 				],
 			},
 
@@ -9358,6 +10056,76 @@
 			},
 
 			{
+				name: "SPD",
+				targets: ["gpSpecial"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+SPD[^.]+down debuff to (\d)?(?=((?:[^e]+|e(?!nem))*))\3enem(?:y|ies)(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
+
+			{
+				name: "Special CT",
+				targets: ["rumbleAbility", "gpAbility"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+Special CT[^.]+down debuff to ([^.]+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					...createUniversalSubmatcher([2]),
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
+				],
+			},
+
+			{
 				name: "Special CT",
 				targets: ["rumbleSpecial"],
 				regex:
@@ -9412,6 +10180,50 @@
 				],
 			},
 
+			{
+				name: "Special CT",
+				targets: ["gpSpecial"],
+				regex:
+					/Inflicts Lv. ([\d]+)[^.]+Special CT[^.]+down debuff to (\d)?(?=((?:[^e]+|e(?!nem))*))\3enem(?:y|ies)(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Level:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "number",
+						description: "Count:",
+						groups: [2],
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [3],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([3]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([3]),
+				],
+			},
 		],
 
 		"Recharge": [
@@ -10545,6 +11357,46 @@
 			},
 
 			{
+				name: "Forced Out",
+				targets: ["rumbleSpecial"],
+				regex:
+					/([.\d]+)% chance to evade[^.]+Forced Out[^.]+to (self|(?=((?:[^c]+|c(?!rew))*))\3crew members?)(?:, excluding self,)?(?: with [^.]+ (ATK|DEF|HP|RCV|SPD|Special CT))?(?: for (\d+) seconds)?/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Chance:",
+						groups: [1],
+					},
+					{
+						type: "number",
+						description: "Duration:",
+						groups: [5],
+					},
+					{
+						type: "separator",
+						description: "Targeting:",
+					},
+					{
+						type: "option",
+						description: "Universal",
+						regex: /all/i,
+						groups: [2],
+						cssClasses: ["min-width-6"],
+					},
+					{
+						type: "separator",
+						description: "Types:",
+					},
+					...createTypesSubmatchers([2]),
+					{
+						type: "separator",
+						description: "Classes:",
+					},
+					...createClassesSubmatchers([2]),
+				],
+			},
+
+			{
 				name: "Paralysis",
 				targets: ["rumbleSpecial"],
 				regex:
@@ -11213,6 +12065,22 @@
 						description: "Amount:",
 						groups: [1],
 					},
+				],
+			},
+
+			/* * * * * Grand Party Burst * * * * */
+
+			{
+				name: "Uses",
+				targets: ["gpSpecial"],
+				regex:
+					/["']uses["']:\s?(\d+)/i,
+				submatchers: [
+					{
+						type: "number",
+						description: "Amount:",
+						groups: [1],
+					}
 				],
 			},
 		],
