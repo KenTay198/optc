@@ -401179,7 +401179,7 @@
               "effect": "evade",
               "chance": 100,
               "duration": 16,
-              "targeting": {"targets": ["[PSY]", "[INT]", "Stiker", "Driven"]}
+              "targeting": {"targets": ["[PSY]", "[INT]", "Striker", "Driven"]}
             },
             {
               "amount": 2000,
